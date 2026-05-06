@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>古仲文 Ku Chung-Wen — Design Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:    #0A0A0A;
+  --dark:   #080808;
+  --light:  #F7F5F0;
+  --mid-bg: #ECEAE5;
+  --mid:    #3A3A37;
+  --muted:  #787874;
+  --faint:  #A8A8A4;
+  --red:    #C8281C;
+  --line-d: rgba(255,255,255,0.07);
+  --line-l: rgba(10,10,10,0.09);
+  --sans:   'Inter','Noto Sans TC',sans-serif;
+  --max:    1280px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--sans);background:var(--light);color:var(--ink);line-height:1.6;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-thumb{background:rgba(10,10,10,0.2)}
+img{display:block;width:100%;height:100%;object-fit:cover}
+a{color:inherit;text-decoration:none}
+
+/* ═══════ NAV ═══════ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  height:56px;padding:0 64px;
+  display:flex;align-items:center;
+  transition:background 0.4s, border-color 0.4s;
+  border-bottom:1px solid transparent;
+}
+nav.scrolled{
+  background:rgba(8,8,8,0.94);
+  border-bottom-color:var(--line-d);
+  backdrop-filter:blur(16px);
+}
+.nav-in{
+  max-width:var(--max);margin:0 auto;width:100%;
+  display:flex;align-items:center;
+}
+.nav-logo{
+  font-size:11px;font-weight:600;letter-spacing:0.2em;
+  text-transform:uppercase;color:rgba(255,255,255,0.45);
+  transition:color 0.2s;
+}
+.nav-logo:hover{color:#fff}
+.nav-links{
+  margin-left:auto;display:flex;gap:40px;list-style:none;
+}
+.nav-links a{
+  font-size:10.5px;font-weight:500;letter-spacing:0.18em;
+  text-transform:uppercase;color:rgba(255,255,255,0.35);
+  transition:color 0.2s;
+}
+.nav-links a:hover{color:rgba(255,255,255,0.8)}
+.nav-cta{
+  margin-left:40px;font-size:10.5px;font-weight:600;
+  letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--red);border-bottom:1px solid var(--red);
+  padding-bottom:1px;transition:opacity 0.2s;
+}
+.nav-cta:hover{opacity:0.6}
+
+/* ═══════ HERO ═══════ */
+#hero{
+  background:var(--dark);
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  justify-content:flex-end;
+  padding:56px 64px 0;
+}
+.hero-body{
+  max-width:var(--max);margin:0 auto;width:100%;
+  padding:0 0 80px;
+  display:flex;flex-direction:column;
+  justify-content:flex-end;
+  flex:1;padding-top:140px;
+}
+.hero-tag{
+  display:flex;align-items:center;gap:12px;
+  font-size:10.5px;font-weight:500;letter-spacing:0.22em;
+  text-transform:uppercase;color:rgba(255,255,255,0.28);
+  margin-bottom:56px;
+}
+.hero-tag::before{
+  content:'';width:24px;height:1px;
+  background:var(--red);flex-shrink:0;
+}
+.hero-name{
+  font-size:clamp(52px,7.5vw,108px);
+  font-weight:900;line-height:0.92;
+  letter-spacing:-0.04em;
+  color:#FAFAF8;
+  margin-bottom:8px;
+  min-height:1.05em;
+  display:flex;align-items:center;flex-wrap:wrap;
+}
+.hero-name .tw-text{
+  display:inline-block;
+  white-space:pre;
+}
+.hero-name .tw-caret{
+  display:inline-block;
+  width:0.06em;height:0.86em;
+  background:var(--red,#C8281C);
+  margin-left:0.08em;
+  vertical-align:-0.06em;
+  animation:tw-blink 0.85s steps(1) infinite;
+}
+@keyframes tw-blink{
+  0%,49%{opacity:1}
+  50%,100%{opacity:0}
+}
+.hero-name-sub{
+  font-size:clamp(20px,3vw,40px);
+  font-weight:300;letter-spacing:0.02em;
+  color:rgba(255,255,255,0.22);
+  margin-bottom:64px;
+}
+.hero-desc-row{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:0;border-top:1px solid var(--line-d);
+  padding-top:40px;
+}
+.hero-roles{
+  display:flex;flex-direction:column;gap:10px;
+  padding-right:64px;border-right:1px solid var(--line-d);
+}
+.hero-role-item{
+  font-size:13px;font-weight:400;letter-spacing:0.06em;
+  color:rgba(255,255,255,0.38);
+  display:flex;align-items:center;gap:14px;
+}
+.hero-role-item.active{color:rgba(255,255,255,0.78);font-weight:500}
+.hero-role-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--red);flex-shrink:0;
+  opacity:0;transition:opacity 0.2s;
+}
+.hero-role-item.active .hero-role-dot{opacity:1}
+.hero-copy{
+  padding-left:64px;
+  font-size:14px;font-weight:300;line-height:1.95;
+  color:rgba(255,255,255,0.38);
+  max-width:520px;
+}
+/* Hero footer bar */
+.hero-bar{
+  background:var(--dark);
+  border-top:1px solid var(--line-d);
+}
+.hero-bar-in{
+  max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:0;
+}
+.hb-cell{
+  padding:28px 40px 28px 32px;
+  border-right:1px solid var(--line-d);
+}
+.hb-cell:first-child{padding-left:0}
+.hb-cell:last-child{border-right:none}
+.hb-label{
+  font-size:9.5px;letter-spacing:0.22em;text-transform:uppercase;
+  color:rgba(255,255,255,0.22);margin-bottom:8px;
+}
+.hb-val{
+  font-size:12.5px;font-weight:500;
+  color:rgba(255,255,255,0.6);line-height:1.5;
+}
+.hb-val em{font-style:normal;color:var(--red)}
+.rd-award-logo{height:22px;width:auto;display:inline-block;vertical-align:middle;margin-right:7px;position:relative;top:-1px}
+.hb-val .rd-award-logo{height:36px;width:auto;top:0;margin-right:10px;vertical-align:middle}
+
+/* ═══════ STATS ═══════ */
+#stats{background:#111113;border-top:1px solid var(--line-d)}
+.stats-row{
+  max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.stat-c{
+  padding:64px 48px;
+  border-right:1px solid var(--line-d);
+}
+.stat-c:last-child{border-right:none}
+.stat-n{
+  font-size:clamp(48px,5vw,80px);
+  font-weight:900;letter-spacing:-0.04em;
+  color:#FAFAF8;line-height:1;margin-bottom:16px;
+}
+.stat-n em{color:var(--red);font-style:normal}
+.stat-d{
+  font-size:12px;font-weight:300;letter-spacing:0.04em;
+  color:rgba(255,255,255,0.28);line-height:1.9;
+}
+
+/* ═══════ SECTION BASE ═══════ */
+.sec{padding:112px 64px}
+.sec-in{max-width:var(--max);margin:0 auto}
+.sec-hd{margin-bottom:72px}
+.sec-eyebrow{
+  display:flex;align-items:center;gap:10px;
+  font-size:10px;letter-spacing:0.24em;text-transform:uppercase;
+  color:var(--red);font-weight:600;margin-bottom:14px;
+}
+.sec-eyebrow::before{
+  content:'';width:20px;height:1px;
+  background:var(--red);flex-shrink:0;
+}
+.sec-t{
+  font-size:clamp(40px,5.5vw,80px);
+  font-weight:900;letter-spacing:-0.04em;
+  color:var(--ink);line-height:0.94;
+  text-transform:lowercase;
+}
+
+/* ═══════ EXPERIENCE ═══════ */
+#experience{background:var(--light)}
+.exp-list{}
+.exp-row{
+  border-top:1px solid var(--line-l);
+  cursor:pointer;
+}
+.exp-row:last-child{border-bottom:1px solid var(--line-l)}
+.exp-top{
+  display:grid;grid-template-columns:160px 1fr auto;
+  gap:40px;align-items:center;
+  padding:28px 0;
+  transition:opacity 0.2s;
+}
+.exp-row:hover .exp-top{opacity:0.7}
+.exp-row.open .exp-top{opacity:1}
+.exp-yr{
+  font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--muted);font-weight:400;line-height:1.6;
+}
+.exp-co{
+  font-size:18px;font-weight:700;
+  letter-spacing:-0.01em;color:var(--ink);
+  margin-bottom:3px;
+}
+.exp-title{
+  font-size:10.5px;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--red);font-weight:500;
+}
+.exp-arrow{
+  width:32px;height:32px;border-radius:50%;
+  border:1px solid var(--line-l);
+  display:flex;align-items:center;justify-content:center;
+  transition:all 0.35s;flex-shrink:0;
+}
+.exp-row.open .exp-arrow{
+  background:var(--ink);border-color:var(--ink);
+  transform:rotate(45deg);
+}
+.exp-arrow svg{width:14px;height:14px;transition:all 0.3s}
+.exp-arrow svg path{stroke:var(--muted)}
+.exp-row.open .exp-arrow svg path{stroke:#fff}
+.exp-body{max-height:0;overflow:hidden;transition:max-height 0.55s ease}
+.exp-row.open .exp-body{max-height:1200px}
+.exp-detail{
+  display:grid;grid-template-columns:160px 1fr 1fr;
+  gap:40px;padding:0 0 56px;
+}
+.exp-detail p{
+  font-size:14px;color:var(--mid);line-height:2;
+  font-weight:300;
+}
+.exp-detail p+p{margin-top:16px}
+.exp-ach-h{
+  font-size:9.5px;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:18px;padding-bottom:10px;
+  border-bottom:1px solid var(--line-l);
+}
+.exp-ach ul{list-style:none;display:flex;flex-direction:column;gap:14px}
+.exp-ach li{
+  font-size:13.5px;color:var(--mid);line-height:1.8;
+  padding-left:20px;position:relative;font-weight:300;
+}
+.exp-ach li::before{
+  content:'';position:absolute;left:0;top:11px;
+  width:8px;height:1px;background:var(--red);
+}
+.exp-ach li strong{color:var(--ink);font-weight:600}
+.exp-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:24px}
+.exp-tag{
+  font-size:9.5px;letter-spacing:0.1em;padding:4px 11px;
+  border:1px solid var(--line-l);color:var(--muted);
+  text-transform:uppercase;font-weight:400;
+}
+.exp-scope{margin-top:24px;padding-top:20px;border-top:1px solid var(--line-l)}
+.exp-scope p{font-size:13px;color:var(--mid);line-height:1.9;font-weight:300}
+.exp-products{margin-top:20px;padding-top:16px;border-top:1px solid var(--line-l)}
+.exp-prod-l{
+  font-size:9.5px;letter-spacing:0.18em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:8px;
+}
+.exp-prod-t{font-size:13px;color:var(--mid);line-height:2;font-weight:300}
+
+/* Awards */
+.awards-block{
+  margin-top:64px;padding-top:64px;
+  border-top:1px solid var(--line-l);
+  display:grid;grid-template-columns:160px 1fr;gap:40px;
+}
+.awards-label{
+  font-size:10px;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--red);font-weight:600;padding-top:4px;
+  display:flex;align-items:flex-start;gap:10px;
+}
+.awards-list{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-l)}
+.award-item{
+  padding:32px;background:var(--light);
+  display:flex;flex-direction:column;gap:6px;
+}
+.award-meta{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.award-badge{
+  font-size:9px;font-weight:700;letter-spacing:0.12em;
+  text-transform:uppercase;padding:3px 9px;
+  background:var(--ink);color:var(--light);flex-shrink:0;
+}
+.award-badge.red{background:var(--red)}
+.award-yr{font-size:10px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted)}
+.award-title{font-size:16px;font-weight:700;color:var(--ink);line-height:1.35;margin-bottom:4px}
+.award-cat{font-size:11px;color:var(--red);font-weight:500;letter-spacing:0.04em}
+.award-proj{font-size:13px;color:var(--mid);line-height:1.7;margin-top:4px}
+.award-sub{font-size:11.5px;color:var(--muted);margin-top:2px}
+.award-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;padding-top:16px;border-top:1px solid var(--line-l)}
+.award-link{
+  font-size:10px;letter-spacing:0.1em;text-transform:uppercase;font-weight:500;
+  color:var(--mid);display:flex;align-items:center;gap:5px;
+  padding:5px 12px;border:1px solid var(--line-l);
+  transition:background 0.15s,color 0.15s,border-color 0.15s;
+}
+.award-link:hover{background:var(--ink);color:var(--light);border-color:var(--ink)}
+
+/* ═══════ SKILLS ═══════ */
+#skills{background:var(--mid-bg)}
+.skills-grid{display:grid;grid-template-columns:160px 1fr;gap:40px}
+.skill-list{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  gap:1px;background:var(--line-l);
+}
+.skill-item{
+  padding:36px 32px;background:var(--mid-bg);
+  transition:background 0.25s;
+}
+.skill-item:hover{background:var(--light)}
+.skill-n{
+  font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--red);margin-bottom:14px;
+}
+.skill-h{
+  font-size:15px;font-weight:700;color:var(--ink);
+  margin-bottom:10px;line-height:1.4;letter-spacing:-0.01em;
+}
+.skill-p{font-size:12.5px;color:var(--mid);line-height:1.95;font-weight:300}
+
+/* ═══════ CLIENTS ═══════ */
+#clients{background:var(--light)}
+.clients-grid{display:grid;grid-template-columns:160px 1fr;gap:40px}
+.client-logos{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(136px,1fr));
+  gap:1px;background:var(--line-l);
+}
+.client-cell{
+  background:var(--light);
+  padding:20px;aspect-ratio:1/1;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:12px;
+  cursor:default;transition:background 0.25s;
+}
+.client-cell:hover{background:#fff}
+.client-logo{
+  display:flex;align-items:center;justify-content:center;
+  width:100%;height:44px;
+}
+.client-logo img{
+  width:auto;height:auto;
+  max-height:36px;max-width:75%;
+  object-fit:contain;
+  filter:grayscale(100%) opacity(0.5);
+  transition:filter 0.3s ease;
+}
+.client-cell:hover .client-logo img{filter:grayscale(0%) opacity(1)}
+.client-sub{
+  font-size:9px;letter-spacing:0.16em;text-transform:uppercase;
+  color:var(--faint);text-align:center;
+}
+
+/* ═══════ PORTFOLIO ═══════ */
+#portfolio{background:var(--dark)}
+#portfolio .sec-t{color:#FAFAF8}
+#portfolio .sec-eyebrow{color:var(--red)}
+.port-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:2px;margin-top:0;
+}
+.port-item{
+  position:relative;overflow:hidden;
+  aspect-ratio:4/3;cursor:pointer;
+  background:#1a1a1a;
+}
+.port-item img{
+  filter:grayscale(100%) brightness(0.85);
+  transition:filter 0.6s ease,transform 0.7s ease;
+}
+.port-item:hover img{
+  filter:grayscale(0%) brightness(1);
+  transform:scale(1.05);
+}
+.port-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(0,0,0,0.85) 0%,transparent 55%);
+  opacity:0;transition:opacity 0.35s;
+  padding:20px;display:flex;flex-direction:column;justify-content:flex-end;
+}
+.port-item:hover .port-overlay{opacity:1}
+.port-overlay h3{
+  font-size:14px;font-weight:600;color:#fff;
+  margin-bottom:4px;line-height:1.3;letter-spacing:-0.01em;
+}
+.port-overlay p{
+  font-size:9.5px;letter-spacing:0.12em;
+  text-transform:uppercase;color:rgba(255,255,255,0.5);
+}
+.port-overlay p .rd-award{filter:brightness(5)}
+
+/* ═══════ LIGHTBOX ═══════ */
+#lb{
+  position:fixed;inset:0;z-index:999;
+  background:rgba(0,0,0,0.97);
+  display:none;align-items:center;justify-content:center;padding:48px;
+}
+#lb.open{display:flex}
+#lb img{max-width:86vw;max-height:82vh;object-fit:contain}
+#lb-close{
+  position:absolute;top:24px;right:32px;
+  background:none;border:none;
+  color:rgba(255,255,255,0.3);font-size:24px;
+  cursor:pointer;transition:color 0.2s;font-weight:300;
+  font-family:var(--sans);letter-spacing:-0.02em;
+}
+#lb-close:hover{color:#fff}
+.lb-nav{
+  position:absolute;top:50%;transform:translateY(-50%);
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  color:#fff;width:48px;height:48px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:18px;transition:background 0.2s;
+}
+.lb-nav:hover{background:rgba(255,255,255,0.12)}
+#lb-prev{left:24px}
+#lb-next{right:24px}
+#lb-cap{
+  position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
+  font-size:10px;letter-spacing:0.16em;text-transform:uppercase;
+  color:rgba(255,255,255,0.3);white-space:nowrap;
+}
+
+/* ═══════ CONTACT ═══════ */
+#contact{background:var(--dark);padding:112px 64px}
+#contact .sec-t{color:#FAFAF8}
+.contact-body{
+  max-width:var(--max);margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:0;margin-top:72px;border-top:1px solid var(--line-d);
+}
+.c-col{padding-top:48px}
+.c-col:first-child{padding-right:80px;border-right:1px solid var(--line-d)}
+.c-col:last-child{padding-left:80px}
+.c-label{
+  font-size:9.5px;letter-spacing:0.22em;text-transform:uppercase;
+  color:rgba(255,255,255,0.22);margin-bottom:28px;
+}
+.c-items{display:flex;flex-direction:column;gap:0}
+.c-item{
+  display:flex;align-items:center;gap:16px;
+  padding:18px 0;
+  border-bottom:1px solid var(--line-d);
+  font-size:15px;font-weight:300;
+  color:rgba(255,255,255,0.45);
+  transition:color 0.2s;
+}
+.c-item:hover{color:rgba(255,255,255,0.85)}
+.c-dot{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--red);flex-shrink:0;
+}
+.f-row{
+  border-bottom:1px solid var(--line-d);
+  padding:18px 0;display:flex;flex-direction:column;gap:7px;
+}
+.f-lbl{
+  font-size:9.5px;letter-spacing:0.2em;text-transform:uppercase;
+  color:rgba(255,255,255,0.2);
+}
+.f-in,.f-ta{
+  background:none;border:none;padding:0;
+  color:rgba(255,255,255,0.75);font-family:var(--sans);
+  font-size:15px;font-weight:300;outline:none;resize:none;width:100%;
+}
+.f-ta{min-height:88px}
+.f-in::placeholder,.f-ta::placeholder{color:rgba(255,255,255,0.16)}
+.f-btn{
+  margin-top:28px;padding:15px 36px;
+  background:none;border:1px solid rgba(255,255,255,0.18);
+  color:rgba(255,255,255,0.5);font-family:var(--sans);
+  font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
+  cursor:pointer;transition:all 0.25s;font-weight:500;
+}
+.f-btn:hover{border-color:#fff;color:#fff}
+
+/* ═══════ FOOTER ═══════ */
+footer{
+  background:var(--dark);
+  border-top:1px solid var(--line-d);
+  padding:24px 64px;
+}
+.ft-in{
+  max-width:var(--max);margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+}
+footer p{
+  font-size:10px;letter-spacing:0.14em;text-transform:uppercase;
+  color:rgba(255,255,255,0.18);
+}
+
+/* ═══════ REVEAL ═══════ */
+.rv{opacity:0;transform:translateY(20px);transition:opacity 0.8s,transform 0.8s}
+.rv.on{opacity:1;transform:none}
+
+/* ═══════ RESPONSIVE ═══════ */
+@media(max-width:1024px){
+  nav,#hero,#contact,footer{padding-left:40px;padding-right:40px}
+  .sec{padding:88px 40px}
+  .hero-bar-in,.stats-row,.skills-grid,.clients-grid,
+  .exp-detail,.awards-block,.contact-body{grid-template-columns:1fr}
+  .exp-top{grid-template-columns:1fr auto}
+  .exp-yr{display:none}
+  .port-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-desc-row{grid-template-columns:1fr}
+  .hero-roles{border-right:none;border-bottom:1px solid var(--line-d);padding-bottom:32px;margin-bottom:32px}
+  .hero-copy{padding-left:0}
+  .c-col:first-child{padding-right:0;border-right:none;border-bottom:1px solid var(--line-d);padding-bottom:48px}
+  .c-col:last-child{padding-left:0}
+  .awards-list{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  nav,#hero,#contact,footer{padding-left:24px;padding-right:24px}
+  .sec{padding:72px 24px}
+  .hero-name{font-size:clamp(52px,14vw,80px)}
+  .port-grid{grid-template-columns:repeat(2,1fr)}
+  .skill-list{grid-template-columns:1fr 1fr}
+  .stats-row{grid-template-columns:1fr 1fr}
+  .hero-bar-in{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAV ─── -->
+<nav id="mainNav">
+  <div class="nav-in">
+    <a href="#hero" class="nav-logo">古仲文 · KCW</a>
+    <ul class="nav-links">
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#clients">Clients</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Contact</a>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-body">
+    <div class="hero-tag">Taipei, Taiwan &nbsp;·&nbsp; Design Leadership &nbsp;·&nbsp; 2026</div>
+    <div class="hero-name" id="heroName" aria-label="古仲文 Ku Chung-Wen"><span class="tw-text" id="twText"></span><span class="tw-caret" aria-hidden="true"></span></div>
+    <div class="hero-name-sub">Ku Chung-Wen</div>
+    <div class="hero-desc-row">
+      <div class="hero-roles">
+        <div class="hero-role-item active"><span class="hero-role-dot"></span>Design Manager</div>
+        <div class="hero-role-item"><span class="hero-role-dot"></span>Brand Strategist</div>
+        <div class="hero-role-item"><span class="hero-role-dot"></span>Art Director</div>
+        <div class="hero-role-item"><span class="hero-role-dot"></span>Cross-functional Leadership</div>
+      </div>
+      <div class="hero-copy">
+        12 年跨國設計領導經驗——從金融科技到音樂科技，帶領品牌從零建構完整生態系，以視覺語言轉化複雜敘事。<br><br>
+        12 years leading design across fintech and music technology. Red Dot Award winner. Form as communication.
+      </div>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <div class="hero-bar-in">
+      <div class="hb-cell">
+        <div class="hb-label">Award</div>
+        <div class="hb-val"><img src="images/logo-reddot.png" class="rd-award-logo" alt="Red Dot Award">2018 — Communication Design</div>
+      </div>
+      <div class="hb-cell">
+        <div class="hb-label">Recognition</div>
+        <div class="hb-val">WDC Taipei 2017 Nominee</div>
+      </div>
+      <div class="hb-cell">
+        <div class="hb-label">Commercial</div>
+        <div class="hb-val">#1 Best Seller — Sweetwater / Thomann</div>
+      </div>
+      <div class="hb-cell">
+        <div class="hb-label">Current</div>
+        <div class="hb-val"><em>Positive Grid</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STATS ─── -->
+<section id="stats">
+  <div class="stats-row">
+    <div class="stat-c rv">
+      <div class="stat-n">12<em>+</em></div>
+      <div class="stat-d">年設計領導經驗<br>Years of design leadership</div>
+    </div>
+    <div class="stat-c rv">
+      <div class="stat-n">10<em>+</em></div>
+      <div class="stat-d">主導軟硬體產品發布<br>Hardware &amp; software launches</div>
+    </div>
+    <div class="stat-c rv">
+      <div class="stat-n">50<em>%↑</em></div>
+      <div class="stat-d">AI 導入縮減製作時間<br>Production time saved via AI</div>
+    </div>
+    <div class="stat-c rv">
+      <div class="stat-n"><em>#</em>8</div>
+      <div class="stat-d">COBINHOOD 全球交易所排名<br>Global exchange ranking</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EXPERIENCE ─── -->
+<section id="experience" class="sec">
+  <div class="sec-in">
+    <div class="sec-hd rv">
+      <div class="sec-eyebrow">01</div>
+      <h2 class="sec-t">Experience</h2>
+    </div>
+    <div class="exp-list rv">
+
+      <!-- POSITIVE GRID -->
+      <div class="exp-row open" onclick="toggleExp(this)">
+        <div class="exp-top">
+          <div class="exp-yr">Sep 2019 — Present</div>
+          <div>
+            <div class="exp-co">Positive Grid</div>
+            <div class="exp-title">Design Manager &nbsp;·&nbsp; Taipei, Taiwan</div>
+          </div>
+          <div class="exp-arrow">
+            <svg viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+        <div class="exp-body">
+          <div class="exp-detail">
+            <div></div>
+            <div>
+              <p>Over the past six years, I have led design strategies and partnered with cross-functional teams to evolve the brand's ecosystem from the ground up — spanning hardware, software, and physical retail experiences.</p>
+              <p>在過去六年間，主導設計策略並與跨國團隊緊密合作，協助品牌生態系統從零到一的建構，涵蓋硬體、軟體及實體零售體驗。</p>
+              <p>Recently, I have integrated Generative AI into our creative workflows, synchronizing cutting-edge tech with traditional photography to elevate visual storytelling. I actively collaborate across US, Germany, China, and Japan teams alongside internal squads in Taipei.</p>
+              <p>近年來，將生成式 AI 導入創意工作流程，在跨時區的環境中建立敏捷溝通與無縫執行的合作文化。</p>
+              <div class="exp-scope">
+                <div class="exp-ach-h">Core Competencies &amp; Global Collaboration</div>
+                <p>Visual Design · Integrated Marketing · UI/UX Collaboration · Design Operations · Brand System Management</p>
+                <p style="margin-top:8px;color:var(--muted)">US (HQ) · Germany &amp; China (Design / Ops) · Japan (Partners) · Taiwan (R&amp;D)</p>
+              </div>
+              <div class="exp-products">
+                <div class="exp-prod-l">Product Portfolio</div>
+                <div class="exp-prod-t">Spark 40 · Spark MINI · Spark 2 · Spark LIVE · Spark GO · Spark EDGE · Spark Link / XLR · RIFF · Spark App · BIAS FX 2 · BIAS X</div>
+              </div>
+              <div class="exp-tags">
+                <span class="exp-tag">Brand Identity</span>
+                <span class="exp-tag">Product Visual</span>
+                <span class="exp-tag">Gen AI Workflow</span>
+                <span class="exp-tag">UI/UX Collab</span>
+                <span class="exp-tag">Design Ops</span>
+                <span class="exp-tag">US / DE / CN / JP / TW</span>
+              </div>
+            </div>
+            <div class="exp-ach">
+              <div class="exp-ach-h">Key Achievements</div>
+              <ul>
+                <li><strong>AI 創新效能：</strong>將生成式 AI 導入設計流程，成功縮減 <strong>50%+</strong> 素材製作時間。</li>
+                <li><strong>產品領導力：</strong>主導超過 <strong>10 款</strong>軟硬體產品視覺策略，建構完整品牌生態系。</li>
+                <li><strong>商業影響力：</strong>主導上市行銷，創造數百萬美元全球眾籌，並於 Sweetwater / Thomann 蟬聯<strong>銷售冠軍</strong>。</li>
+                <li><strong>跨國協作：</strong>跨五個時區建立敏捷溝通文化，協調無縫執行。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COBINHOOD / DEXON -->
+      <div class="exp-row" onclick="toggleExp(this)">
+        <div class="exp-top">
+          <div class="exp-yr">Aug 2017 — Aug 2019</div>
+          <div>
+            <div class="exp-co">COBINHOOD / DEXON Foundation</div>
+            <div class="exp-title">Art Director &nbsp;·&nbsp; Taipei, Taiwan</div>
+          </div>
+          <div class="exp-arrow">
+            <svg viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+        <div class="exp-body">
+          <div class="exp-detail">
+            <div></div>
+            <div>
+              <p>Leading a multidisciplinary design team, I orchestrated the complete brand identity and user experience for a high-frequency fintech ecosystem.</p>
+              <p>帶領跨領域設計團隊，統籌高頻金融科技生態系完整的品牌識別與用戶體驗，管理 COBINHOOD（加密貨幣交易所）與 DEXON（公鏈）的雙品牌策略。</p>
+              <p>My role encompassed end-to-end design management — from trading platform UI/UX to the spatial design of global blockchain summits.</p>
+              <div class="exp-tags">
+                <span class="exp-tag">Fintech · Blockchain</span>
+                <span class="exp-tag">UI/UX Design</span>
+                <span class="exp-tag">Dual-Brand Strategy</span>
+                <span class="exp-tag">Event &amp; Spatial Design</span>
+                <span class="exp-tag"><img src="images/logo-reddot.png" class="rd-award-logo" alt="Red Dot Award">2018</span>
+              </div>
+            </div>
+            <div class="exp-ach">
+              <div class="exp-ach-h">Key Achievements</div>
+              <ul>
+                <li><img src="images/logo-reddot.png" class="rd-award-logo" alt="Red Dot Award"><strong>Award 2018：</strong>榮獲德國紅點傳達設計大獎，COBINHOOD Exchange 介面設計獲國際肯定。</li>
+                <li><strong>全球影響力：</strong>透過信任感視覺策略，協助交易量衝上<strong>全球第 8 名</strong>。</li>
+                <li><strong>Product &amp; UI/UX：</strong>主導 DEXON 全系列介面設計，打造首個由台灣原生團隊建構的區塊鏈生態系。</li>
+                <li><strong>活動設計：</strong>統籌國際路演與黑客松視覺體驗，確保線上線下品牌一致性。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- EZTABLE -->
+      <div class="exp-row" onclick="toggleExp(this)">
+        <div class="exp-top">
+          <div class="exp-yr">Aug 2013 — Mar 2017</div>
+          <div>
+            <div class="exp-co">EZTABLE</div>
+            <div class="exp-title">Design Team Lead / Senior Designer &nbsp;·&nbsp; Taipei</div>
+          </div>
+          <div class="exp-arrow">
+            <svg viewBox="0 0 14 14" fill="none"><path d="M7 2v10M2 7h10" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+        <div class="exp-body">
+          <div class="exp-detail">
+            <div></div>
+            <div>
+              <p>Led the design team in unifying the O2O (Online-to-Offline) platform experience across web and mobile. I established the corporate identity (CI) system and brand guidelines for global expansion.</p>
+              <p>帶領設計團隊整合網頁與行動端的 O2O 平台體驗。建立企業識別系統（CI）與品牌規範以支持全球擴張，確保台灣與海外分公司的一致性。</p>
+              <div class="exp-tags">
+                <span class="exp-tag">O2O Platform</span>
+                <span class="exp-tag">CIS Design</span>
+                <span class="exp-tag">Mobile UI/UX</span>
+                <span class="exp-tag">Brand System</span>
+                <span class="exp-tag">Asia Expansion</span>
+              </div>
+            </div>
+            <div class="exp-ach">
+              <div class="exp-ach-h">Key Achievements</div>
+              <ul>
+                <li><strong>規模：</strong>為超過 <strong>120 萬</strong>註冊會員、<strong>1,000 萬筆</strong>線上訂位的平台設計完整 UI/UX。</li>
+                <li><strong>系統設計：</strong>建構完整 CIS 企業識別系統，標準化亞洲各區視覺資產。</li>
+                <li><strong>全球擴張：</strong>制定品牌規範，確保台灣與海外分公司視覺一致性。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- AWARDS -->
+    <div class="awards-block rv">
+      <div class="awards-label">Awards</div>
+      <div class="awards-list">
+        <div class="award-item">
+          <div class="award-meta">
+            <span class="award-badge red">Red Dot</span>
+            <span class="award-yr">2018</span>
+          </div>
+          <div class="award-title"><img src="images/logo-reddot.png" class="rd-award-logo" alt="Red Dot Award">Award — Communication Design</div>
+          <div class="award-cat">International Design Excellence</div>
+          <div class="award-proj">COBINHOOD Exchange Interface Design</div>
+          <div class="award-sub">Validation of world-class design quality</div>
+          <div class="award-links">
+            <a href="https://www.red-dot.org/zh/project/cobinhood-crypto-exchange-26003" target="_blank" rel="noopener" class="award-link">↗ Red Dot Official</a>
+            <a href="https://technews.tw/2018/08/30/cobinhood-app-wins-red-dot-design-award/" target="_blank" rel="noopener" class="award-link">↗ TechNews 報導</a>
+          </div>
+        </div>
+        <div class="award-item">
+          <div class="award-meta">
+            <span class="award-badge">WDC</span>
+            <span class="award-yr">2017</span>
+          </div>
+          <div class="award-title">WDC Taipei — Nominated</div>
+          <div class="award-cat">World Design Capital Recognition</div>
+          <div class="award-proj">LUXGEN Official Website</div>
+          <div class="award-sub">台北世界設計之都提名</div>
+          <div class="award-links">
+            <a href="https://www.youtube.com/watch?v=BAORFxIhOqo" target="_blank" rel="noopener" class="award-link">▶ WDC 影片</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SKILLS ─── -->
+<section id="skills" class="sec">
+  <div class="sec-in">
+    <div class="sec-hd rv">
+      <div class="sec-eyebrow">02</div>
+      <h2 class="sec-t">Skills</h2>
+    </div>
+    <div class="skills-grid rv">
+      <div></div>
+      <div class="skill-list">
+        <div class="skill-item">
+          <div class="skill-n">01 · Leadership</div>
+          <div class="skill-h">Design Leadership<br>設計領導力</div>
+          <p class="skill-p">跨部門團隊管理、敏捷設計營運、全球跨區協作 US / EU / APAC。</p>
+        </div>
+        <div class="skill-item">
+          <div class="skill-n">02 · Strategy</div>
+          <div class="skill-h">Brand Strategy<br>品牌策略</div>
+          <p class="skill-p">企業識別系統 CIS、整合行銷、O2O 品牌體驗設計。</p>
+        </div>
+        <div class="skill-item">
+          <div class="skill-n">03 · Technology</div>
+          <div class="skill-h">Tech Integration<br>科技整合</div>
+          <p class="skill-p">生成式 AI 工作流 Midjourney / Firefly、UI/UX 策略、軟硬體生態系整合。</p>
+        </div>
+        <div class="skill-item">
+          <div class="skill-n">04 · Spatial</div>
+          <div class="skill-h">Spatial Design<br>空間體驗</div>
+          <p class="skill-p">展場設計與視覺陳列，國際貿易展及全球路演活動統籌。</p>
+        </div>
+        <div class="skill-item">
+          <div class="skill-n">05 · Product</div>
+          <div class="skill-h">Product Visual<br>產品視覺</div>
+          <p class="skill-p">硬體包裝、APP 介面一致性、全球通路視覺規範制定。</p>
+        </div>
+        <div class="skill-item">
+          <div class="skill-n">06 · Collaboration</div>
+          <div class="skill-h">Global Collab<br>跨國協作</div>
+          <p class="skill-p">與美國、德國、中國、日本、台灣跨時區團隊協作執行。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CLIENTS ─── -->
+<section id="clients" class="sec">
+  <div class="sec-in">
+    <div class="sec-hd rv">
+      <div class="sec-eyebrow">03</div>
+      <h2 class="sec-t">Clients</h2>
+    </div>
+    <div class="clients-grid rv">
+      <div></div>
+      <div class="client-logos">
+        <div class="client-cell"><div class="client-logo"><img src="images/icons/icon-logo-positivegrid.svg" alt="Positive Grid"></div><div class="client-sub">Positive Grid</div></div>
+        <div class="client-cell"><div class="client-logo"><img src="images/icons/icon-logo-cobinhood.svg" alt="COBINHOOD"></div><div class="client-sub">COBINHOOD</div></div>
+        <div class="client-cell"><div class="client-logo"><img src="images/icons/icon-logo-dexon.svg" alt="DEXON Foundation"></div><div class="client-sub">DEXON</div></div>
+        <div class="client-cell"><div class="client-logo"><img src="images/icons/icon-logo-eztable.svg" alt="EZTABLE"></div><div class="client-sub">EZTABLE</div></div>
+        <div class="client-cell"><div class="client-logo"><img src="images/icons/icon-logo-asia-miles.svg" alt="Asia Miles"></div><div class="client-sub">Asia Miles</div></div>
+        <div class="client-cell"><div class="client-logo"><img src="images/icons/icon-logo-sheraton.svg" alt="Sheraton"></div><div class="client-sub">Sheraton</div></div>
+        <div class="client-cell"><div class="client-logo"><img src="images/icons/icon-logo-humblehouse.svg" alt="Humble House"></div><div class="client-sub">Humble House</div></div>
+        <div class="client-cell"><div class="client-logo"><img src="images/icons/icon-logo-WHotel.svg" alt="W Hotel"></div><div class="client-sub">W Hotel Taipei</div></div>
+        <div class="client-cell"><div class="client-logo"><img src="images/icons/icon-logo-tripadvisor.svg" alt="TripAdvisor"></div><div class="client-sub">TripAdvisor</div></div>
+        <div class="client-cell"><div class="client-logo"><img src="images/icons/icon-logo-logitech.svg" alt="Logitech"></div><div class="client-sub">Logitech</div></div>
+        <div class="client-cell"><div class="client-logo"><img src="images/icons/icon-logo-LUXGEN.svg" alt="Luxgen"></div><div class="client-sub">Luxgen</div></div>
+        <div class="client-cell"><div class="client-logo"><img src="images/icons/icon-logo-kymco.svg" alt="KYMCO"></div><div class="client-sub">KYMCO</div></div>
+        <div class="client-cell"><div class="client-logo"><span style="font-size:22px;font-weight:900;letter-spacing:-0.04em;color:currentColor;font-family:var(--sans)">SONY</span></div><div class="client-sub">Technology</div></div>
+        <div class="client-cell"><div class="client-logo"><img src="images/icons/icon-logo-Seiko.svg" alt="SEIKO"></div><div class="client-sub">SEIKO</div></div>
+        <div class="client-cell"><div class="client-logo"><span style="font-size:18px;font-weight:700;letter-spacing:0.06em;color:currentColor;font-family:var(--sans)">ANZ</span></div><div class="client-sub">ANZ Bank</div></div>
+        <div class="client-cell"><div class="client-logo"><img src="images/icons/icon-logo-FamilyMart.svg" alt="FamilyMart"></div><div class="client-sub">FamilyMart</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PORTFOLIO ─── -->
+<section id="portfolio" class="sec">
+  <div class="sec-in">
+    <div class="sec-hd rv">
+      <div class="sec-eyebrow">04</div>
+      <h2 class="sec-t">Portfolio</h2>
+    </div>
+  </div>
+  <div class="port-grid rv" id="portGrid">
+    <div class="port-item" onclick="openLb(0)"><img src="images/portfolio-BIASX-01.jpg" alt="BIAS X 1" loading="lazy"/><div class="port-overlay"><h3>Positive Grid — BIAS X</h3><p>Brand Identity · Campaign Visual</p></div></div>
+    <div class="port-item" onclick="openLb(1)"><img src="images/portfolio-Spark-01.jpg" alt="Spark 1" loading="lazy"/><div class="port-overlay"><h3>Positive Grid — Spark Series</h3><p>Integrated Marketing · Visual System</p></div></div>
+    <div class="port-item" onclick="openLb(2)"><img src="images/portfolio-cobinhood-01.jpg" alt="COBINHOOD 1" loading="lazy"/><div class="port-overlay"><h3>COBINHOOD Exchange</h3><p>Brand Identity · <img src="images/logo-reddot.png" class="rd-award-logo" alt="Red Dot Award">2018</p></div></div>
+    <div class="port-item" onclick="openLb(3)"><img src="images/portfolio-cobinhood-02.jpg" alt="COBINHOOD 2" loading="lazy"/><div class="port-overlay"><h3>COBINHOOD Exchange</h3><p>UI/UX Design</p></div></div>
+    <div class="port-item" onclick="openLb(4)"><img src="images/portfolio-cobinhood-03.jpg" alt="COBINHOOD 3" loading="lazy"/><div class="port-overlay"><h3>COBINHOOD Exchange</h3><p>Visual System</p></div></div>
+    <div class="port-item" onclick="openLb(5)"><img src="images/portfolio-dexon-01.jpg" alt="DEXON 1" loading="lazy"/><div class="port-overlay"><h3>DEXON Foundation</h3><p>Brand Identity</p></div></div>
+    <div class="port-item" onclick="openLb(6)"><img src="images/portfolio-dexon-02.jpg" alt="DEXON 2" loading="lazy"/><div class="port-overlay"><h3>DEXON Foundation</h3><p>Interface Design</p></div></div>
+    <div class="port-item" onclick="openLb(7)"><img src="images/portfolio-dexon-03.jpg" alt="DEXON 3" loading="lazy"/><div class="port-overlay"><h3>DEXON Foundation</h3><p>Ecosystem Visual</p></div></div>
+    <div class="port-item" onclick="openLb(8)"><img src="images/portfolio-eztable-01.jpg" alt="EZTABLE 1" loading="lazy"/><div class="port-overlay"><h3>EZTABLE</h3><p>O2O Platform</p></div></div>
+    <div class="port-item" onclick="openLb(9)"><img src="images/portfolio-eztable-02.jpg" alt="EZTABLE 2" loading="lazy"/><div class="port-overlay"><h3>EZTABLE</h3><p>Mobile UI</p></div></div>
+    <div class="port-item" onclick="openLb(10)"><img src="images/portfolio-eztable-03.jpg" alt="EZTABLE 3" loading="lazy"/><div class="port-overlay"><h3>EZTABLE</h3><p>Brand System</p></div></div>
+    <div class="port-item" onclick="openLb(11)"><img src="images/portfolio-sheraton-01.jpg" alt="Sheraton 1" loading="lazy"/><div class="port-overlay"><h3>Sheraton Taipei</h3><p>Brand Visual</p></div></div>
+    <div class="port-item" onclick="openLb(12)"><img src="images/portfolio-sheraton-02.jpg" alt="Sheraton 2" loading="lazy"/><div class="port-overlay"><h3>Sheraton Taipei</h3><p>Campaign</p></div></div>
+    <div class="port-item" onclick="openLb(13)"><img src="images/portfolio-humble-house-01.jpg" alt="Humble 1" loading="lazy"/><div class="port-overlay"><h3>Humble House</h3><p>Visual Identity</p></div></div>
+    <div class="port-item" onclick="openLb(14)"><img src="images/portfolio-humble-house-02.jpg" alt="Humble 2" loading="lazy"/><div class="port-overlay"><h3>Humble House</h3><p>Brand Campaign</p></div></div>
+    <div class="port-item" onclick="openLb(15)"><img src="images/portfolio-logitech-01.jpg" alt="Logitech 1" loading="lazy"/><div class="port-overlay"><h3>Logitech</h3><p>Brand Visual</p></div></div>
+    <div class="port-item" onclick="openLb(16)"><img src="images/portfolio-logitech-02.jpg" alt="Logitech 2" loading="lazy"/><div class="port-overlay"><h3>Logitech</h3><p>Campaign Design</p></div></div>
+    <div class="port-item" onclick="openLb(17)"><img src="images/portfolio-luxgen-01.jpg" alt="Luxgen 1" loading="lazy"/><div class="port-overlay"><h3>Luxgen</h3><p>Brand Identity · WDC</p></div></div>
+    <div class="port-item" onclick="openLb(18)"><img src="images/portfolio-luxgen-02.jpg" alt="Luxgen 2" loading="lazy"/><div class="port-overlay"><h3>Luxgen</h3><p>Visual System</p></div></div>
+  </div>
+</section>
+
+<!-- ─── LIGHTBOX ─── -->
+<div id="lb">
+  <button id="lb-close" onclick="closeLb()">✕</button>
+  <button class="lb-nav" id="lb-prev" onclick="navLb(-1)">←</button>
+  <img id="lb-img" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" alt=""/>
+  <button class="lb-nav" id="lb-next" onclick="navLb(1)">→</button>
+  <div id="lb-cap"></div>
+</div>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact">
+  <div style="max-width:var(--max);margin:0 auto">
+    <div class="sec-hd rv">
+      <div class="sec-eyebrow" style="color:rgba(200,40,28,0.7)">05</div>
+      <h2 class="sec-t" style="color:#FAFAF8">Let's work<br>together.</h2>
+    </div>
+    <div class="contact-body rv">
+      <div class="c-col">
+        <div class="c-label">Get in touch</div>
+        <div class="c-items">
+          <a href="mailto:wen.website@gmail.com" class="c-item"><span class="c-dot"></span>wen.website@gmail.com</a>
+          <a href="tel:+886975551061" class="c-item"><span class="c-dot"></span>+886 975-551-061</a>
+          <div class="c-item"><span class="c-dot"></span>Taipei, Taiwan</div>
+          <a href="https://kuchungwen.netlify.app/" target="_blank" rel="noopener" class="c-item"><span class="c-dot"></span>kuchungwen.netlify.app ↗</a>
+        </div>
+      </div>
+      <div class="c-col">
+        <div class="c-label">Send a message</div>
+        <form onsubmit="handleForm(event)">
+          <div class="f-row"><div class="f-lbl">Name</div><input class="f-in" type="text" placeholder="Your name" required/></div>
+          <div class="f-row"><div class="f-lbl">Email</div><input class="f-in" type="email" placeholder="hello@company.com" required/></div>
+          <div class="f-row"><div class="f-lbl">Message</div><textarea class="f-ta" placeholder="Tell me about your project..."></textarea></div>
+          <button type="submit" class="f-btn">Send Message →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="ft-in">
+    <p>© 2026 古仲文 Ku Chung-Wen</p>
+    <p>Design Manager · Brand Strategist · Art Director</p>
+    <p style="color:rgba(200,40,28,0.5)">Red Dot Award 2018</p>
+  </div>
+</footer>
+
+<script>
+/* ── Scrolled nav ── */
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+/* ── Hero name typewriter ── */
+(() => {
+  const el = document.getElementById('twText');
+  if (!el) return;
+  const words = [
+    '古仲文',
+    'WEN',
+    'Design Manager',
+    'Art Director',
+    'Brand Strategist',
+    'Design Team Lead',
+    'Senior Designer'
+  ];
+  const TYPE = 95, ERASE = 45, HOLD = 1500, GAP = 380;
+  let wi = 0;
+  function typeWord() {
+    const w = words[wi];
+    let i = 0;
+    (function step() {
+      el.textContent = w.slice(0, ++i);
+      if (i < w.length) setTimeout(step, TYPE);
+      else setTimeout(eraseWord, HOLD);
+    })();
+  }
+  function eraseWord() {
+    const w = words[wi];
+    let i = w.length;
+    (function step() {
+      el.textContent = w.slice(0, --i);
+      if (i > 0) setTimeout(step, ERASE);
+      else { wi = (wi + 1) % words.length; setTimeout(typeWord, GAP); }
+    })();
+  }
+  typeWord();
+})();
+
+/* ── Scroll reveal ── */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); observer.unobserve(e.target); } });
+}, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.rv').forEach(el => observer.observe(el));
+
+/* ── Accordion ── */
+function toggleExp(row) {
+  const isOpen = row.classList.contains('open');
+  document.querySelectorAll('.exp-row.open').forEach(r => r !== row && r.classList.remove('open'));
+  row.classList.toggle('open', !isOpen);
+}
+
+/* ── Lightbox ── */
+const lbSrcs = [
+  ['images/portfolio-BIASX-01.jpg','Positive Grid — BIAS X · Brand Identity & Campaign Visual'],
+  ['images/portfolio-Spark-01.jpg','Positive Grid — Spark Series · Integrated Marketing & Visual System'],
+  ['images/portfolio-cobinhood-01.jpg','COBINHOOD Exchange — Brand Identity'],
+  ['images/portfolio-cobinhood-02.jpg','COBINHOOD Exchange — UI/UX Design'],
+  ['images/portfolio-cobinhood-03.jpg','COBINHOOD Exchange — Visual System'],
+  ['images/portfolio-dexon-01.jpg','DEXON Foundation — Brand Identity'],
+  ['images/portfolio-dexon-02.jpg','DEXON Foundation — Interface Design'],
+  ['images/portfolio-dexon-03.jpg','DEXON Foundation — Ecosystem Visual'],
+  ['images/portfolio-eztable-01.jpg','EZTABLE — O2O Platform'],
+  ['images/portfolio-eztable-02.jpg','EZTABLE — Mobile UI'],
+  ['images/portfolio-eztable-03.jpg','EZTABLE — Brand System'],
+  ['images/portfolio-sheraton-01.jpg','Sheraton Taipei — Brand Visual'],
+  ['images/portfolio-sheraton-02.jpg','Sheraton Taipei — Campaign'],
+  ['images/portfolio-humble-house-01.jpg','Humble House — Visual Identity'],
+  ['images/portfolio-humble-house-02.jpg','Humble House — Brand Campaign'],
+  ['images/portfolio-logitech-01.jpg','Logitech — Brand Visual'],
+  ['images/portfolio-logitech-02.jpg','Logitech — Campaign Design'],
+  ['images/portfolio-luxgen-01.jpg','Luxgen — Brand Identity · WDC 2017'],
+  ['images/portfolio-luxgen-02.jpg','Luxgen — Visual System'],
+];
+let lbIdx = 0;
+function openLb(i) {
+  lbIdx = i;
+  const lb = document.getElementById('lb');
+  document.getElementById('lb-img').src = lbSrcs[i][0];
+  document.getElementById('lb-cap').textContent = lbSrcs[i][1];
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLb() {
+  document.getElementById('lb').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function navLb(dir) {
+  lbIdx = (lbIdx + dir + lbSrcs.length) % lbSrcs.length;
+  document.getElementById('lb-img').src = lbSrcs[lbIdx][0];
+  document.getElementById('lb-cap').textContent = lbSrcs[lbIdx][1];
+}
+document.addEventListener('keydown', e => {
+  const lb = document.getElementById('lb');
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLb();
+  if (e.key === 'ArrowRight') navLb(1);
+  if (e.key === 'ArrowLeft') navLb(-1);
+});
+document.getElementById('lb').addEventListener('click', e => {
+  if (e.target === document.getElementById('lb')) closeLb();
+});
+
+/* ── Contact form ── */
+function handleForm(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.f-btn');
+  btn.textContent = 'Message Sent ✓';
+  btn.style.borderColor = '#C8281C';
+  btn.style.color = '#C8281C';
+  setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.borderColor = ''; btn.style.color = ''; e.target.reset(); }, 3000);
+}
+</script>
+</body>
+</html>
