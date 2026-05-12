@@ -124,8 +124,34 @@ nav.scrolled{
   font-size:clamp(20px,3vw,40px);
   font-weight:300;letter-spacing:0.02em;
   color:rgba(255,255,255,0.22);
-  margin-bottom:64px;
+  margin-bottom:36px;
 }
+.hero-dl-wrap{
+  margin-bottom:48px;
+}
+.hero-dl-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:12px 28px;
+  border:1px solid rgba(255,255,255,0.18);
+  border-radius:2px;
+  font-family:var(--sans);
+  font-size:12px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;
+  color:rgba(255,255,255,0.65);
+  text-decoration:none;
+  background:rgba(255,255,255,0.04);
+  transition:border-color 0.2s,color 0.2s,background 0.2s;
+  cursor:pointer;
+}
+.hero-dl-btn:hover{
+  border-color:var(--red);
+  color:#fff;
+  background:rgba(200,40,28,0.08);
+}
+.hero-dl-icon{
+  width:14px;height:14px;flex-shrink:0;
+  opacity:0.6;transition:opacity 0.2s;
+}
+.hero-dl-btn:hover .hero-dl-icon{opacity:1}
 .hero-desc-row{
   display:grid;grid-template-columns:1fr 1fr;
   gap:0;border-top:1px solid var(--line-d);
@@ -589,6 +615,14 @@ footer p{
     <div class="hero-tag">Taipei, Taiwan &nbsp;·&nbsp; Design Leadership &nbsp;·&nbsp; 2026</div>
     <div class="hero-name" id="heroName" aria-label="古仲文 Ku Chung-Wen"><span class="tw-text" id="twText"></span><span class="tw-caret" aria-hidden="true"></span></div>
     <div class="hero-name-sub">Ku Chung-Wen</div>
+    <div class="hero-dl-wrap">
+      <a class="hero-dl-btn" href="履歷資深設計品牌經理古仲文2026.pdf" download="KuChungWen_Resume_2026.pdf">
+        <svg class="hero-dl-icon" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M7 1v8M4 6.5l3 3 3-3M1 11h12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        下載履歷 &nbsp;·&nbsp; Download CV
+      </a>
+    </div>
     <div class="hero-desc-row">
       <div class="hero-roles">
         <div class="hero-role-item active"><span class="hero-role-dot"></span>Design Manager</div>
