@@ -3,7 +3,34 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>古仲文 Ku Chung-Wen — Design Manager</title>   <link rel="icon" type="image/png" href="images/og-image.png">
+<title>古仲文 Ku Chung-Wen — Design Manager</title>
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="images/wen-favicon.svg"/>
+<link rel="shortcut icon" href="images/wen-favicon.svg"/>
+
+<!-- SEO -->
+<meta name="description" content="古仲文 Ku Chung-Wen — Design Manager, Brand Strategist & Art Director. 12 years leading design across fintech and music technology. Red Dot Award 2018. Based in Taipei, Taiwan."/>
+<meta name="author" content="古仲文 Ku Chung-Wen"/>
+<meta name="keywords" content="Design Manager, Brand Strategist, Art Director, Taipei, Positive Grid, COBINHOOD, Red Dot Award, UI/UX, 古仲文"/>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://kuchungwen.netlify.app/"/>
+<meta property="og:title" content="古仲文 Ku Chung-Wen — Design Manager"/>
+<meta property="og:description" content="12 years leading design across fintech and music technology. Red Dot Award 2018 winner. Brand Strategist & Art Director based in Taipei, Taiwan."/>
+<meta property="og:image" content="https://kuchungwen.netlify.app/images/og-image.png"/>
+<meta property="og:image:width" content="1200"/>
+<meta property="og:image:height" content="630"/>
+<meta property="og:locale" content="zh_TW"/>
+<meta property="og:site_name" content="古仲文 Ku Chung-Wen"/>
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="古仲文 Ku Chung-Wen — Design Manager"/>
+<meta name="twitter:description" content="12 years leading design across fintech and music technology. Red Dot Award 2018 winner. Based in Taipei, Taiwan."/>
+<meta name="twitter:image" content="https://kuchungwen.netlify.app/images/og-image.png"/>
+
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet"/>
@@ -12,7 +39,7 @@
 :root{
   --ink:    #0A0A0A;
   --dark:   #080808;
-  --light:  #F7F5F0;h
+  --light:  #F7F5F0;
   --mid-bg: #ECEAE5;
   --mid:    #3A3A37;
   --muted:  #787874;
@@ -23,8 +50,8 @@
   --sans:   'Inter','Noto Sans TC',sans-serif;
   --max:    1280px;
 }
-html{scroll-behavior:smooth;font-size:20px}
-body{font-family:var(--sans);background:var(--light);color:var(--ink);font-weight:500;line-height:1.6;overflow-x:hidden}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--sans);background:var(--light);color:var(--ink);line-height:1.6;overflow-x:hidden}
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-thumb{background:rgba(10,10,10,0.2)}
 img{display:block;width:100%;height:100%;object-fit:cover}
@@ -124,34 +151,8 @@ nav.scrolled{
   font-size:clamp(20px,3vw,40px);
   font-weight:300;letter-spacing:0.02em;
   color:rgba(255,255,255,0.22);
-  margin-bottom:36px;
+  margin-bottom:64px;
 }
-.hero-dl-wrap{
-  margin-bottom:48px;
-}
-.hero-dl-btn{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:12px 28px;
-  border:1px solid rgba(255,255,255,0.18);
-  border-radius:2px;
-  font-family:var(--sans);
-  font-size:12px;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;
-  color:rgba(255,255,255,0.65);
-  text-decoration:none;
-  background:rgba(255,255,255,0.04);
-  transition:border-color 0.2s,color 0.2s,background 0.2s;
-  cursor:pointer;
-}
-.hero-dl-btn:hover{
-  border-color:var(--red);
-  color:#fff;
-  background:rgba(200,40,28,0.08);
-}
-.hero-dl-icon{
-  width:14px;height:14px;flex-shrink:0;
-  opacity:0.6;transition:opacity 0.2s;
-}
-.hero-dl-btn:hover .hero-dl-icon{opacity:1}
 .hero-desc-row{
   display:grid;grid-template-columns:1fr 1fr;
   gap:0;border-top:1px solid var(--line-d);
@@ -461,6 +462,19 @@ nav.scrolled{
   text-transform:uppercase;color:rgba(255,255,255,0.5);
 }
 .port-overlay p .rd-award{filter:brightness(5)}
+.port-item{display:block}
+/* Brand-guide text links */
+.guide-links{margin-top:64px;border-top:1px solid var(--line-d)}
+.guide-link{
+  display:flex;align-items:center;gap:18px;
+  padding:26px 4px;border-bottom:1px solid var(--line-d);
+  color:rgba(255,255,255,0.55);transition:color 0.2s,padding 0.25s;
+}
+.guide-link:hover{color:#fff;padding-left:16px}
+.guide-dot{width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0}
+.guide-txt{font-size:clamp(18px,2.2vw,26px);font-weight:500;letter-spacing:-0.01em}
+.guide-meta{margin-left:auto;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);font-weight:600}
+.guide-link:hover .guide-meta{color:var(--red)}
 
 /* ═══════ LIGHTBOX ═══════ */
 #lb{
@@ -592,12 +606,58 @@ footer p{
   .stats-row{grid-template-columns:1fr 1fr}
   .hero-bar-in{grid-template-columns:1fr 1fr}
 }
+
+/* ═══════ TWEAK: text-scale overrides (driven by Tweaks panel) ═══════ */
+/* multipliers default to 1 → identical to original design */
+#hero .hero-tag{font-size:calc(10.5px*var(--ta,1)*var(--th,1))}
+#hero .hero-name{font-size:calc(clamp(52px,7.5vw,108px)*var(--ta,1)*var(--th,1))}
+#hero .hero-name-sub{font-size:calc(clamp(20px,3vw,40px)*var(--ta,1)*var(--th,1))}
+#hero .hero-role-item{font-size:calc(13px*var(--ta,1)*var(--th,1))}
+#hero .hero-copy{font-size:calc(16px*var(--ta,1)*var(--th,1))!important}
+#hero .hb-label{font-size:calc(9.5px*var(--ta,1)*var(--th,1))}
+#hero .hb-val{font-size:calc(12.5px*var(--ta,1)*var(--th,1))}
+
+#stats .stat-n{font-size:calc(clamp(48px,5vw,80px)*var(--ta,1)*var(--ts,1))}
+#stats .stat-d{font-size:calc(14px*var(--ta,1)*var(--ts,1))!important}
+
+#experience .sec-eyebrow{font-size:calc(10px*var(--ta,1)*var(--te,1))}
+#experience .sec-t{font-size:calc(clamp(40px,5.5vw,80px)*var(--ta,1)*var(--te,1))}
+#experience .exp-yr{font-size:calc(10.5px*var(--ta,1)*var(--te,1))}
+#experience .exp-co{font-size:calc(18px*var(--ta,1)*var(--te,1))}
+#experience .exp-title{font-size:calc(10.5px*var(--ta,1)*var(--te,1))}
+#experience .exp-detail p{font-size:calc(14px*var(--ta,1)*var(--te,1))}
+#experience .exp-ach li{font-size:calc(13.5px*var(--ta,1)*var(--te,1))}
+#experience .exp-ach-h{font-size:calc(9.5px*var(--ta,1)*var(--te,1))}
+#experience .exp-scope p{font-size:calc(13px*var(--ta,1)*var(--te,1))}
+#experience .exp-prod-t{font-size:calc(13px*var(--ta,1)*var(--te,1))}
+#experience .exp-tag{font-size:calc(9.5px*var(--ta,1)*var(--te,1))}
+#experience .award-title{font-size:calc(16px*var(--ta,1)*var(--te,1))}
+#experience .award-proj{font-size:calc(13px*var(--ta,1)*var(--te,1))}
+
+#skills .sec-eyebrow{font-size:calc(10px*var(--ta,1)*var(--tk,1))}
+#skills .sec-t{font-size:calc(clamp(40px,5.5vw,80px)*var(--ta,1)*var(--tk,1))}
+#skills .skill-n{font-size:calc(9.5px*var(--ta,1)*var(--tk,1))}
+#skills .skill-h{font-size:calc(15px*var(--ta,1)*var(--tk,1))}
+#skills .skill-p{font-size:calc(12.5px*var(--ta,1)*var(--tk,1))}
+
+#contact .sec-eyebrow{font-size:calc(10px*var(--ta,1)*var(--tc,1))}
+#contact .sec-t{font-size:calc(clamp(40px,5.5vw,80px)*var(--ta,1)*var(--tc,1))}
+#contact .c-label{font-size:calc(9.5px*var(--ta,1)*var(--tc,1))}
+#contact .c-item{font-size:calc(15px*var(--ta,1)*var(--tc,1))}
+#contact .f-lbl{font-size:calc(9.5px*var(--ta,1)*var(--tc,1))}
+#contact .f-in,#contact .f-ta{font-size:calc(15px*var(--ta,1)*var(--tc,1))}
+
+#clients .sec-eyebrow,#portfolio .sec-eyebrow{font-size:calc(10px*var(--ta,1))}
+#clients .sec-t,#portfolio .sec-t{font-size:calc(clamp(40px,5.5vw,80px)*var(--ta,1))}
+#clients .client-sub{font-size:calc(9px*var(--ta,1))}
+#portfolio .port-overlay h3{font-size:calc(14px*var(--ta,1))}
+#portfolio .port-overlay p{font-size:calc(9.5px*var(--ta,1))}
 </style>
 </head>
 <body>
 
 <!-- ─── NAV ─── -->
-<nav id="mainNav">
+<nav id="mainNav" style="background-color: rgb(53, 53, 53)">
   <div class="nav-in">
     <a href="#hero" class="nav-logo">古仲文 · KCW</a>
     <ul class="nav-links">
@@ -610,33 +670,24 @@ footer p{
 </nav>
 
 <!-- ─── HERO ─── -->
-<section id="hero">
+<section id="hero" style="background-color: rgb(53, 53, 53)">
   <div class="hero-body">
-    <div class="hero-tag">Taipei, Taiwan &nbsp;·&nbsp; Design Leadership &nbsp;·&nbsp; 2026</div>
     <div class="hero-name" id="heroName" aria-label="古仲文 Ku Chung-Wen"><span class="tw-text" id="twText"></span><span class="tw-caret" aria-hidden="true"></span></div>
     <div class="hero-name-sub">Ku Chung-Wen</div>
-    <div class="hero-dl-wrap">
-      <a class="hero-dl-btn" href="履歷-資深設計品牌經理-古仲文-2026.pdf" download="KuChungWen_Resume_2026.pdf">
-        <svg class="hero-dl-icon" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M7 1v8M4 6.5l3 3 3-3M1 11h12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        下載履歷 &nbsp;·&nbsp; Download CV
-      </a>
-    </div>
     <div class="hero-desc-row">
-      <div class="hero-roles">
+      <div class="hero-roles" style="font-size: 16px; line-height: 1.55">
         <div class="hero-role-item active"><span class="hero-role-dot"></span>Design Manager</div>
         <div class="hero-role-item"><span class="hero-role-dot"></span>Brand Strategist</div>
         <div class="hero-role-item"><span class="hero-role-dot"></span>Art Director</div>
         <div class="hero-role-item"><span class="hero-role-dot"></span>Cross-functional Leadership</div>
       </div>
-      <div class="hero-copy">
+      <div class="hero-copy" style="font-weight: 300; font-size: 16px">
         12 年跨國設計領導經驗——從金融科技到音樂科技，帶領品牌從零建構完整生態系，以視覺語言轉化複雜敘事。<br><br>
         12 years leading design across fintech and music technology. Red Dot Award winner. Form as communication.
       </div>
     </div>
   </div>
-  <div class="hero-bar">
+  <div class="hero-bar" style="background-color: rgb(53, 53, 53)">
     <div class="hero-bar-in">
       <div class="hb-cell">
         <div class="hb-label">Award</div>
@@ -659,32 +710,31 @@ footer p{
 </section>
 
 <!-- ─── STATS ─── -->
-<section id="stats">
+<section id="stats" style="background-color: rgb(53, 53, 53)">
   <div class="stats-row">
-    <div class="stat-c rv">
-      <div class="stat-n">12<em>+</em></div>
-      <div class="stat-d">年設計領導經驗<br>Years of design leadership</div>
+    <div class="stat-c rv" style="width: 320px">
+      <div class="stat-n">12<em style="font-size: 60px">+</em></div>
+      <div class="stat-d" style="font-size: 14px">年設計領導經驗<br>Years of design leadership</div>
+    </div>
+    <div class="stat-c rv" style="width: 320px">
+      <div class="stat-n">10<em style="font-size: 60px">+</em></div>
+      <div class="stat-d" style="font-size: 14px">主導軟硬體產品發布<br>Hardware &amp; software launches</div>
+    </div>
+    <div class="stat-c rv" style="width: 320px">
+      <div class="stat-n">50<em style="font-size: 48px">%↑</em></div>
+      <div class="stat-d" style="font-size: 14px">AI 導入縮減製作時間<br>Production time saved via AI</div>
     </div>
     <div class="stat-c rv">
-      <div class="stat-n">10<em>+</em></div>
-      <div class="stat-d">主導軟硬體產品發布<br>Hardware &amp; software launches</div>
-    </div>
-    <div class="stat-c rv">
-      <div class="stat-n">50<em>%↑</em></div>
-      <div class="stat-d">AI 導入縮減製作時間<br>Production time saved via AI</div>
-    </div>
-    <div class="stat-c rv">
-      <div class="stat-n"><em>#</em>8</div>
-      <div class="stat-d">COBINHOOD 全球交易所排名<br>Global exchange ranking</div>
+      <div class="stat-n"><em style="font-size: 60px">#</em>8</div>
+      <div class="stat-d" style="font-size: 14px">COBINHOOD 全球交易所排名<br>Global exchange ranking</div>
     </div>
   </div>
 </section>
 
 <!-- ─── EXPERIENCE ─── -->
-<section id="experience" class="sec">
+<section id="experience" class="sec" style="background-color: rgb(214, 214, 214)">
   <div class="sec-in">
     <div class="sec-hd rv">
-      <div class="sec-eyebrow">01</div>
       <h2 class="sec-t">Experience</h2>
     </div>
     <div class="exp-list rv">
@@ -824,7 +874,7 @@ footer p{
     <div class="awards-block rv">
       <div class="awards-label">Awards</div>
       <div class="awards-list">
-        <div class="award-item">
+        <div class="award-item" style="background-color: rgb(255, 255, 255)">
           <div class="award-meta">
             <span class="award-badge red">Red Dot</span>
             <span class="award-yr">2018</span>
@@ -838,7 +888,7 @@ footer p{
             <a href="https://technews.tw/2018/08/30/cobinhood-app-wins-red-dot-design-award/" target="_blank" rel="noopener" class="award-link">↗ TechNews 報導</a>
           </div>
         </div>
-        <div class="award-item">
+        <div class="award-item" style="background-color: rgb(255, 255, 255)">
           <div class="award-meta">
             <span class="award-badge">WDC</span>
             <span class="award-yr">2017</span>
@@ -857,42 +907,41 @@ footer p{
 </section>
 
 <!-- ─── SKILLS ─── -->
-<section id="skills" class="sec">
+<section id="skills" class="sec" style="background-color: rgb(233, 233, 233)">
   <div class="sec-in">
     <div class="sec-hd rv">
-      <div class="sec-eyebrow">02</div>
       <h2 class="sec-t">Skills</h2>
     </div>
     <div class="skills-grid rv">
       <div></div>
       <div class="skill-list">
-        <div class="skill-item">
-          <div class="skill-n">01 · Leadership</div>
+        <div class="skill-item" style="background-color: rgb(255, 255, 255)">
+          <div class="skill-n" style="letter-spacing: 0.8px">Leadership</div>
           <div class="skill-h">Design Leadership<br>設計領導力</div>
           <p class="skill-p">跨部門團隊管理、敏捷設計營運、全球跨區協作 US / EU / APAC。</p>
         </div>
-        <div class="skill-item">
-          <div class="skill-n">02 · Strategy</div>
+        <div class="skill-item" style="background-color: rgb(254, 254, 254)">
+          <div class="skill-n" style="letter-spacing: 0.8px">Strategy</div>
           <div class="skill-h">Brand Strategy<br>品牌策略</div>
           <p class="skill-p">企業識別系統 CIS、整合行銷、O2O 品牌體驗設計。</p>
         </div>
-        <div class="skill-item">
-          <div class="skill-n">03 · Technology</div>
+        <div class="skill-item" style="background-color: rgb(255, 255, 255)">
+          <div class="skill-n" style="letter-spacing: 0.8px">Technology</div>
           <div class="skill-h">Tech Integration<br>科技整合</div>
           <p class="skill-p">生成式 AI 工作流 Midjourney / Firefly、UI/UX 策略、軟硬體生態系整合。</p>
         </div>
-        <div class="skill-item">
-          <div class="skill-n">04 · Spatial</div>
+        <div class="skill-item" style="background-color: rgb(255, 255, 255)">
+          <div class="skill-n" style="letter-spacing: 0.8px">Spatial</div>
           <div class="skill-h">Spatial Design<br>空間體驗</div>
           <p class="skill-p">展場設計與視覺陳列，國際貿易展及全球路演活動統籌。</p>
         </div>
-        <div class="skill-item">
-          <div class="skill-n">05 · Product</div>
+        <div class="skill-item" style="background-color: rgb(255, 255, 255)">
+          <div class="skill-n" style="letter-spacing: 0.8px">Product</div>
           <div class="skill-h">Product Visual<br>產品視覺</div>
           <p class="skill-p">硬體包裝、APP 介面一致性、全球通路視覺規範制定。</p>
         </div>
-        <div class="skill-item">
-          <div class="skill-n">06 · Collaboration</div>
+        <div class="skill-item" style="background-color: rgb(255, 255, 255)">
+          <div class="skill-n" style="letter-spacing: 0.8px">Collaboration</div>
           <div class="skill-h">Global Collab<br>跨國協作</div>
           <p class="skill-p">與美國、德國、中國、日本、台灣跨時區團隊協作執行。</p>
         </div>
@@ -902,16 +951,15 @@ footer p{
 </section>
 
 <!-- ─── CLIENTS ─── -->
-<section id="clients" class="sec">
+<section id="clients" class="sec" style="background-color: rgb(213, 213, 213)">
   <div class="sec-in">
     <div class="sec-hd rv">
-      <div class="sec-eyebrow">03</div>
       <h2 class="sec-t">Clients</h2>
     </div>
     <div class="clients-grid rv">
       <div></div>
-      <div class="client-logos">
-        <div class="client-cell"><div class="client-logo"><img src="images/icons/icon-logo-positivegrid.svg" alt="Positive Grid"></div><div class="client-sub">Positive Grid</div></div>
+      <div class="client-logos" style="background-color: rgb(213, 213, 213)">
+        <div class="client-cell" style="color: rgb(168, 168, 164)"><div class="client-logo"><img src="images/icons/icon-logo-positivegrid.svg" alt="Positive Grid"></div><div class="client-sub">Positive Grid</div></div>
         <div class="client-cell"><div class="client-logo"><img src="images/icons/icon-logo-cobinhood.svg" alt="COBINHOOD"></div><div class="client-sub">COBINHOOD</div></div>
         <div class="client-cell"><div class="client-logo"><img src="images/icons/icon-logo-dexon.svg" alt="DEXON Foundation"></div><div class="client-sub">DEXON</div></div>
         <div class="client-cell"><div class="client-logo"><img src="images/icons/icon-logo-eztable.svg" alt="EZTABLE"></div><div class="client-sub">EZTABLE</div></div>
@@ -923,9 +971,9 @@ footer p{
         <div class="client-cell"><div class="client-logo"><img src="images/icons/icon-logo-logitech.svg" alt="Logitech"></div><div class="client-sub">Logitech</div></div>
         <div class="client-cell"><div class="client-logo"><img src="images/icons/icon-logo-LUXGEN.svg" alt="Luxgen"></div><div class="client-sub">Luxgen</div></div>
         <div class="client-cell"><div class="client-logo"><img src="images/icons/icon-logo-kymco.svg" alt="KYMCO"></div><div class="client-sub">KYMCO</div></div>
-        <div class="client-cell"><div class="client-logo"><span style="font-size:22px;font-weight:900;letter-spacing:-0.04em;color:currentColor;font-family:var(--sans)">SONY</span></div><div class="client-sub">Technology</div></div>
+        <div class="client-cell"><div class="client-logo"><span style="font-size:22px;font-weight:900;letter-spacing:-0.04em;color:currentColor;font-family:var(--sans)"><span style="color:#a8a8a4">SONY</span></span></div><div class="client-sub">Technology</div></div>
         <div class="client-cell"><div class="client-logo"><img src="images/icons/icon-logo-Seiko.svg" alt="SEIKO"></div><div class="client-sub">SEIKO</div></div>
-        <div class="client-cell"><div class="client-logo"><span style="font-size:18px;font-weight:700;letter-spacing:0.06em;color:currentColor;font-family:var(--sans)">ANZ</span></div><div class="client-sub">ANZ Bank</div></div>
+        <div class="client-cell"><div class="client-logo"><span style="font-size: 18px; font-weight: 700; letter-spacing: 0.06em; color: rgb(168, 168, 164); font-family: var(--sans)">ANZ</span></div><div class="client-sub">ANZ Bank</div></div>
         <div class="client-cell"><div class="client-logo"><img src="images/icons/icon-logo-FamilyMart.svg" alt="FamilyMart"></div><div class="client-sub">FamilyMart</div></div>
       </div>
     </div>
@@ -933,10 +981,9 @@ footer p{
 </section>
 
 <!-- ─── PORTFOLIO ─── -->
-<section id="portfolio" class="sec">
+<section id="portfolio" class="sec" style="background-color: rgb(53, 53, 53)">
   <div class="sec-in">
     <div class="sec-hd rv">
-      <div class="sec-eyebrow">04</div>
       <h2 class="sec-t">Portfolio</h2>
     </div>
   </div>
@@ -961,6 +1008,13 @@ footer p{
     <div class="port-item" onclick="openLb(17)"><img src="images/portfolio-luxgen-01.jpg" alt="Luxgen 1" loading="lazy"/><div class="port-overlay"><h3>Luxgen</h3><p>Brand Identity · WDC</p></div></div>
     <div class="port-item" onclick="openLb(18)"><img src="images/portfolio-luxgen-02.jpg" alt="Luxgen 2" loading="lazy"/><div class="port-overlay"><h3>Luxgen</h3><p>Visual System</p></div></div>
   </div>
+  <div class="sec-in">
+    <div class="guide-links rv">
+      <a class="guide-link" href="docs/DEXON-Brand-Guidelines.pdf" target="_blank" rel="noopener"><span class="guide-dot"></span><span class="guide-txt" style="font-size: 18px">Brand Guide — DEXON</span><span class="guide-meta">PDF ↗</span></a>
+      <a class="guide-link" href="docs/EZTABLE-Brand-Guidelines.pdf" target="_blank" rel="noopener"><span class="guide-dot"></span><span class="guide-txt" style="font-size: 18px">Brand Guide — EZTABLE</span><span class="guide-meta">PDF ↗</span></a>
+      <a class="guide-link" href="docs/Positive-Grid-Brand-Guidelines.pdf" target="_blank" rel="noopener"><span class="guide-dot"></span><span class="guide-txt" style="font-size: 18px">Brand Guide — Positive Grid</span><span class="guide-meta">PDF ↗</span></a>
+    </div>
+  </div>
 </section>
 
 <!-- ─── LIGHTBOX ─── -->
@@ -973,10 +1027,9 @@ footer p{
 </div>
 
 <!-- ─── CONTACT ─── -->
-<section id="contact">
+<section id="contact" style="background-color: rgb(53, 53, 53); color: rgb(53, 53, 53)">
   <div style="max-width:var(--max);margin:0 auto">
     <div class="sec-hd rv">
-      <div class="sec-eyebrow" style="color:rgba(200,40,28,0.7)">05</div>
       <h2 class="sec-t" style="color:#FAFAF8">Let's work<br>together.</h2>
     </div>
     <div class="contact-body rv">
@@ -1006,8 +1059,9 @@ footer p{
 <footer>
   <div class="ft-in">
     <p>© 2026 古仲文 Ku Chung-Wen</p>
-    <p>Design Manager · Brand Strategist · Art Director</p>
-    <p style="color:rgba(200,40,28,0.5)">Red Dot Award 2018</p>
+    <p>
+</p>
+    <p style="color:rgba(200,40,28,0.5)">WEN.WEBSITE@GMAIL.COM  +886 975-551-061</p>
   </div>
 </footer>
 
@@ -1127,6 +1181,64 @@ function handleForm(e) {
   btn.style.color = '#C8281C';
   setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.borderColor = ''; btn.style.color = ''; e.target.reset(); }, 3000);
 }
+</script>
+
+<!-- ─── TWEAKS PANEL (React island) ─── -->
+<div id="tweak-root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "textAll": 1.1,
+  "hero": 1,
+  "stats": 1,
+  "experience": 1,
+  "skills": 1,
+  "contact": 1,
+  "accent": "#C8281C"
+}/*EDITMODE-END*/;
+
+function TweakApp() {
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  React.useEffect(() => {
+    const r = document.documentElement.style;
+    r.setProperty('--ta', t.textAll);
+    r.setProperty('--th', t.hero);
+    r.setProperty('--ts', t.stats);
+    r.setProperty('--te', t.experience);
+    r.setProperty('--tk', t.skills);
+    r.setProperty('--tc', t.contact);
+    r.setProperty('--red', t.accent);
+  }, [t]);
+
+  return (
+    <TweaksPanel title="Tweaks">
+      <TweakSection label="Text size" />
+      <TweakSlider label="All text" value={t.textAll} min={0.8} max={1.6} step={0.05}
+                   onChange={(v) => setTweak('textAll', v)} />
+      <TweakSection label="Per section" />
+      <TweakSlider label="Hero" value={t.hero} min={0.8} max={1.8} step={0.05}
+                   onChange={(v) => setTweak('hero', v)} />
+      <TweakSlider label="Stats" value={t.stats} min={0.8} max={1.8} step={0.05}
+                   onChange={(v) => setTweak('stats', v)} />
+      <TweakSlider label="Experience" value={t.experience} min={0.8} max={1.8} step={0.05}
+                   onChange={(v) => setTweak('experience', v)} />
+      <TweakSlider label="Skills" value={t.skills} min={0.8} max={1.8} step={0.05}
+                   onChange={(v) => setTweak('skills', v)} />
+      <TweakSlider label="Contact" value={t.contact} min={0.8} max={1.8} step={0.05}
+                   onChange={(v) => setTweak('contact', v)} />
+      <TweakSection label="Accent" />
+      <TweakColor label="Accent color" value={t.accent}
+                  options={['#C8281C', '#0A0A0A', '#1F6F5B', '#2A5FB8', '#B8862A']}
+                  onChange={(v) => setTweak('accent', v)} />
+    </TweaksPanel>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('tweak-root')).render(<TweakApp />);
 </script>
 </body>
 </html>
