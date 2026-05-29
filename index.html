@@ -587,6 +587,8 @@ footer p{
   .sec{padding:88px 40px}
   .hero-bar-in,.stats-row,.skills-grid,.clients-grid,
   .exp-detail,.awards-block,.contact-body{grid-template-columns:1fr}
+  .stat-c{width:auto!important;border-right:none;border-bottom:1px solid var(--line-d)}
+  .stat-c:last-child{border-bottom:none}
   .exp-top{grid-template-columns:1fr auto}
   .exp-yr{display:none}
   .port-grid{grid-template-columns:repeat(2,1fr)}
@@ -604,6 +606,9 @@ footer p{
   .port-grid{grid-template-columns:repeat(2,1fr)}
   .skill-list{grid-template-columns:1fr 1fr}
   .stats-row{grid-template-columns:1fr 1fr}
+  .stat-c{width:auto!important;padding:44px 24px}
+  .stat-c:nth-child(odd){border-right:1px solid var(--line-d)}
+  .stat-c:nth-child(even){border-right:none}
   .hero-bar-in{grid-template-columns:1fr 1fr}
 }
 
@@ -714,7 +719,7 @@ footer p{
   <div class="stats-row">
     <div class="stat-c rv" style="width: 320px">
       <div class="stat-n">12<em style="font-size: 60px">+</em></div>
-      <div class="stat-d" style="font-size: 14px">12 年設計領導經驗<br>12 Years of design leadership</div>
+      <div class="stat-d" style="font-size: 14px">年設計領導經驗<br>Years of design leadership</div>
     </div>
     <div class="stat-c rv" style="width: 320px">
       <div class="stat-n">10<em style="font-size: 60px">+</em></div>
@@ -1047,7 +1052,7 @@ footer p{
         <form onsubmit="handleForm(event)">
           <div class="f-row"><div class="f-lbl">Name</div><input class="f-in" type="text" placeholder="Your name" required/></div>
           <div class="f-row"><div class="f-lbl">Email</div><input class="f-in" type="email" placeholder="hello@company.com" required/></div>
-          <div class="f-row"><div class="f-lbl">Message</div><textarea class="f-ta" placeholder="Thank you for visiting."></textarea></div>
+          <div class="f-row"><div class="f-lbl">Message</div><textarea class="f-ta" placeholder="Tell me about your project..."></textarea></div>
           <button type="submit" class="f-btn">Send Message →</button>
         </form>
       </div>
