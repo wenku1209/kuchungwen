@@ -39,6 +39,53 @@ button {
   font: inherit;
 }
 
+.ui-arrow {
+  position: relative;
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 1em;
+  height: 1em;
+  color: currentColor;
+}
+
+.ui-arrow::before {
+  content: "";
+  position: absolute;
+  left: 12%;
+  top: 50%;
+  width: 76%;
+  height: 1.5px;
+  background: currentColor;
+  transform: translateY(-50%);
+}
+
+.ui-arrow::after {
+  content: "";
+  position: absolute;
+  right: 10%;
+  top: 27%;
+  width: 42%;
+  height: 42%;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+}
+
+.ui-arrow-up-right {
+  transform: rotate(-45deg);
+}
+
+.ui-arrow-down-right {
+  transform: rotate(45deg);
+}
+
+.ui-arrow-down {
+  transform: rotate(90deg);
+}
+
+.ui-arrow-left {
+  transform: rotate(180deg);
+}
+
 img {
   display: block;
   max-width: 100%;
@@ -182,8 +229,9 @@ nav a:focus-visible::after {
 }
 
 .hero h1 .outline {
-  color: transparent;
-  -webkit-text-stroke: 1.5px var(--ink);
+  color: #55554f;
+  -webkit-text-stroke: 0;
+  text-shadow: none;
 }
 
 .hero-intro {
@@ -330,7 +378,7 @@ nav a:focus-visible::after {
 
 .award-card-main:hover .award-arrow,
 .award-card-news:hover span:last-child {
-  transform: translate(2px, -2px);
+  transform: rotate(-45deg) translate(2px, -2px);
 }
 
 .award-card-news {
@@ -532,7 +580,7 @@ nav a:focus-visible::after {
 .work-link-card > a:hover h3 i,
 .cis-card:hover h3 i,
 .cis-card:hover .work-meta > i {
-  transform: translate(0.12em, -0.12em);
+  transform: rotate(-45deg) translate(0.12em, -0.12em);
 }
 
 details.work-card {
@@ -778,6 +826,10 @@ details.work-card {
   font-size: 30px;
 }
 
+.cis-viewer-nav .ui-arrow {
+  font-size: 24px;
+}
+
 .cis-viewer-nav:hover,
 .cis-viewer-close:hover {
   color: var(--acid);
@@ -791,6 +843,9 @@ details.work-card {
 .cis-viewer-external {
   padding: 8px 14px;
   border: 1px solid rgba(255, 255, 255, 0.35);
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
   color: var(--paper);
   font-size: 9px;
   font-weight: 800;
@@ -1104,6 +1159,10 @@ details.work-card {
   font-style: normal;
 }
 
+.brand-guide-card:hover > i {
+  transform: rotate(-45deg) translate(2px, -2px);
+}
+
 .expertise {
   max-width: var(--max);
   margin: auto;
@@ -1385,6 +1444,10 @@ details.work-card {
   color: var(--acid);
 }
 
+.email-link .ui-arrow {
+  font-size: 0.8em;
+}
+
 .contact-bottom {
   margin-top: 130px;
   padding-top: 20px;
@@ -1516,7 +1579,14 @@ details.work-card {
   }
 
   .hero h1 {
-    font-size: clamp(47px, 15vw, 72px);
+    font-size: clamp(44px, 13.5vw, 66px);
+    line-height: 0.98;
+    letter-spacing: -0.06em;
+  }
+
+  .hero h1 .outline {
+    margin-top: 0.08em;
+    color: #4b4b46;
   }
 
   .hero-intro {

@@ -229,7 +229,7 @@ const cisProjects = {
     title: "COBINHOOD App",
     externalUrl:
       "https://www.red-dot.org/zh/project/cobinhood-crypto-exchange-26003",
-    externalLabel: "VIEW RED DOT PROJECT ↗",
+    externalLabel: "VIEW RED DOT PROJECT",
     images: [
       "assets/portfolio/portfolio-cobinhood-02.jpg",
       "assets/portfolio/portfolio-cobinhood-01.jpg",
@@ -361,7 +361,7 @@ document.querySelectorAll(".cis-card").forEach((card) => {
     cisViewerExternal.hidden = !project.externalUrl;
     if (project.externalUrl) {
       cisViewerExternal.href = project.externalUrl;
-      cisViewerExternal.textContent = project.externalLabel;
+      cisViewerExternal.innerHTML = `${project.externalLabel}<span class="ui-arrow ui-arrow-up-right" aria-hidden="true"></span>`;
     } else {
       cisViewerExternal.removeAttribute("href");
       cisViewerExternal.textContent = "";
