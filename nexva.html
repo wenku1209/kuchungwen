@@ -8,11 +8,14 @@
       content="NEXVA corporate identity system and brand applications by Ku Chung-Wen."
     />
     <title>NEXVA — Corporate Identity System</title>
-    <link rel="stylesheet" href="nexva.css?v=20260613-2" />
+    <link rel="stylesheet" href="nexva.css?v=20260615-1" />
   </head>
   <body>
     <header class="site-header">
-      <a class="back-link" href="index.html#work">← 返回作品 / Back to work</a>
+      <a class="back-link" href="index.html#work"
+        ><span class="ui-arrow ui-arrow-left" aria-hidden="true"></span>
+        返回作品 / Back to work</a
+      >
       <img
         class="brand-logo"
         src="assets/nexva-cis/icon-NEXVA.svg"
@@ -81,10 +84,16 @@
     </footer>
 
     <dialog class="image-dialog" aria-label="NEXVA CIS image viewer">
-      <button class="dialog-close" type="button" aria-label="Close">×</button>
-      <button class="dialog-nav dialog-prev" type="button" aria-label="Previous image">←</button>
+      <button class="dialog-close" type="button" aria-label="Close">
+        <span class="ui-close" aria-hidden="true"></span>
+      </button>
+      <button class="dialog-nav dialog-prev" type="button" aria-label="Previous image">
+        <span class="ui-arrow ui-arrow-left" aria-hidden="true"></span>
+      </button>
       <img class="dialog-image" alt="" />
-      <button class="dialog-nav dialog-next" type="button" aria-label="Next image">→</button>
+      <button class="dialog-nav dialog-next" type="button" aria-label="Next image">
+        <span class="ui-arrow" aria-hidden="true"></span>
+      </button>
       <p class="dialog-count" aria-live="polite"></p>
     </dialog>
 

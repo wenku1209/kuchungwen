@@ -1,9 +1,51 @@
 const languageButton = document.querySelector(".lang-toggle");
+const menuButton = document.querySelector(".menu-toggle");
+const siteHeader = document.querySelector(".site-header");
+const siteNavigation = document.querySelector("#site-navigation");
+const mainContent = document.querySelector("main");
 const translatableElements = document.querySelectorAll("[data-zh][data-en]");
 const profileImage = document.querySelector(".portrait-frame img");
-let currentLanguage = "zh";
+const languagePreferenceKey = "portfolio_language";
 
-function setLanguage(language) {
+function getInitialLanguage() {
+  try {
+    const savedLanguage = window.localStorage.getItem(languagePreferenceKey);
+    if (savedLanguage === "zh" || savedLanguage === "en") {
+      return savedLanguage;
+    }
+  } catch {
+    // Browser privacy settings may disable local storage.
+  }
+
+  const browserLanguage =
+    navigator.languages?.[0] || navigator.language || "en";
+  return browserLanguage.toLowerCase().startsWith("zh") ? "zh" : "en";
+}
+
+let currentLanguage = getInitialLanguage();
+
+function updateMenuLabel(isOpen) {
+  menuButton.setAttribute(
+    "aria-label",
+    currentLanguage === "zh"
+      ? isOpen
+        ? "關閉導覽選單"
+        : "開啟導覽選單"
+      : isOpen
+        ? "Close navigation menu"
+        : "Open navigation menu",
+  );
+}
+
+function setMenuOpen(isOpen) {
+  menuButton.setAttribute("aria-expanded", String(isOpen));
+  siteHeader.classList.toggle("menu-open", isOpen);
+  document.body.classList.toggle("menu-open", isOpen);
+  mainContent.inert = isOpen;
+  updateMenuLabel(isOpen);
+}
+
+function setLanguage(language, remember = false) {
   currentLanguage = language;
   document.documentElement.lang = language === "zh" ? "zh-Hant" : "en";
 
@@ -20,12 +62,42 @@ function setLanguage(language) {
     language === "zh"
       ? "古仲文黑白形象照"
       : "Black-and-white editorial portrait of Ku Chung-Wen";
+  updateMenuLabel(menuButton.getAttribute("aria-expanded") === "true");
+
+  if (remember) {
+    try {
+      window.localStorage.setItem(languagePreferenceKey, language);
+    } catch {
+      // The language still switches when storage is unavailable.
+    }
+  }
 }
+
+setLanguage(currentLanguage);
 
 languageButton.addEventListener("click", () => {
   const nextLanguage = currentLanguage === "zh" ? "en" : "zh";
-  setLanguage(nextLanguage);
+  setLanguage(nextLanguage, true);
   trackEvent("language_switch", { selected_language: nextLanguage });
+});
+
+menuButton.addEventListener("click", () => {
+  setMenuOpen(menuButton.getAttribute("aria-expanded") !== "true");
+});
+
+siteNavigation.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => setMenuOpen(false));
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && menuButton.getAttribute("aria-expanded") === "true") {
+    setMenuOpen(false);
+    menuButton.focus();
+  }
+});
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 900) setMenuOpen(false);
 });
 
 const revealObserver = new IntersectionObserver(

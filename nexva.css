@@ -31,6 +31,64 @@ button {
   font: inherit;
 }
 
+.ui-arrow,
+.ui-close {
+  --icon-size: 18px;
+  --icon-stroke: 2px;
+  position: relative;
+  display: inline-block;
+  flex: 0 0 auto;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  color: currentColor;
+}
+
+.ui-arrow::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  top: 50%;
+  height: var(--icon-stroke);
+  background: currentColor;
+  transform: translateY(-50%);
+}
+
+.ui-arrow::after {
+  content: "";
+  position: absolute;
+  right: 2px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-top: var(--icon-stroke) solid currentColor;
+  border-right: var(--icon-stroke) solid currentColor;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.ui-arrow-left {
+  transform: rotate(180deg);
+}
+
+.ui-close::before,
+.ui-close::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 14px;
+  height: var(--icon-stroke);
+  background: currentColor;
+}
+
+.ui-close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.ui-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
 .site-header {
   position: sticky;
   z-index: 10;
@@ -46,6 +104,9 @@ button {
 }
 
 .back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -209,13 +270,27 @@ footer {
 .dialog-close {
   top: 14px;
   right: 22px;
-  font-size: 36px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+}
+
+.dialog-close .ui-close {
+  --icon-size: 22px;
 }
 
 .dialog-nav {
   top: 50%;
-  font-size: 30px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
   transform: translateY(-50%);
+}
+
+.dialog-nav .ui-arrow {
+  --icon-size: 22px;
 }
 
 .dialog-prev {

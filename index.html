@@ -7,12 +7,44 @@
       name="description"
       content="古仲文 Ku Chung-Wen — 設計領導、品牌策略與藝術指導。"
     />
+    <link rel="canonical" href="https://kuchungwen.netlify.app/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kuchungwen.netlify.app/" />
+    <meta
+      property="og:title"
+      content="Ku Chung-Wen | Design Leadership & Brand Strategy"
+    />
+    <meta
+      property="og:description"
+      content="Design leadership across brand, product, and experience. Building clear design systems that drive growth."
+    />
+    <meta
+      property="og:image"
+      content="https://kuchungwen.netlify.app/assets/og-kuchungwen.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Ku Chung-Wen, design leader" />
+    <meta property="og:site_name" content="Ku Chung-Wen Portfolio" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Ku Chung-Wen | Design Leadership & Brand Strategy"
+    />
+    <meta
+      name="twitter:description"
+      content="Design leadership across brand, product, and experience."
+    />
+    <meta
+      name="twitter:image"
+      content="https://kuchungwen.netlify.app/assets/og-kuchungwen.png"
+    />
     <!-- 填入 GA4 Measurement ID（例如 G-XXXXXXXXXX）即可啟用流量紀錄。 -->
     <meta name="ga-measurement-id" content="" />
     <title>古仲文 Ku Chung-Wen | Design Leader</title>
     <link rel="icon" href="assets/wen-favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=20260614-4" />
-    <script src="script.js?v=20260614-4" defer></script>
+    <link rel="stylesheet" href="styles.css?v=20260615-9" />
+    <script src="script.js?v=20260615-9" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">跳至主要內容</a>
@@ -21,7 +53,7 @@
       <a class="brand" href="#top" aria-label="回到首頁">
         <img src="assets/wen-favicon.svg" alt="古仲文個人標誌" />
       </a>
-      <nav aria-label="主要導覽">
+      <nav id="site-navigation" aria-label="主要導覽">
         <a
           href="#about"
           data-zh="關於"
@@ -55,6 +87,7 @@
           >專業</a
         >
         <a
+          class="nav-contact"
           href="#contact"
           data-zh="聯絡"
           data-en="Contact"
@@ -62,9 +95,38 @@
           data-track-label="Contact"
           >聯絡</a
         >
+        <div class="nav-contact-details">
+          <p data-zh="直接聯絡" data-en="Direct contact">直接聯絡</p>
+          <a
+            href="mailto:wen.website@gmail.com"
+            data-track="contact_click"
+            data-track-label="Mobile navigation email"
+          >
+            <span>EMAIL</span>
+            <strong>wen.website@gmail.com</strong>
+          </a>
+          <a
+            href="tel:+886975551061"
+            data-track="contact_click"
+            data-track-label="Mobile navigation phone"
+          >
+            <span data-zh="電話" data-en="PHONE">電話</span>
+            <strong>+886 975-551061</strong>
+          </a>
+        </div>
       </nav>
       <button class="lang-toggle" type="button" aria-label="Switch to English">
         EN
+      </button>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-navigation"
+        aria-label="開啟導覽選單"
+      >
+        <span></span>
+        <span></span>
       </button>
     </header>
 
@@ -161,19 +223,25 @@
           </div>
         </div>
         <div class="about-grid">
-          <h2
-            class="reveal"
-            data-zh="從策略、系統到上市，讓設計成為團隊共同使用的語言。"
-            data-en="From strategy and systems through launch, I make design a shared language across teams."
-          >
-            從策略、系統到上市，讓設計成為團隊共同使用的語言。
+          <h2 class="reveal">
+            <span
+              data-zh="從策略、系統到上市，讓設計成為"
+              data-en="From strategy and systems through launch, I make design"
+              >從策略、系統到上市，讓設計成為</span
+            ><!--
+            --><span
+              class="section-keyword"
+              data-zh="團隊共同使用的語言。"
+              data-en=" a shared language across teams."
+              >團隊共同使用的語言。</span
+            >
           </h2>
           <div class="about-copy reveal">
             <p
-              data-zh="過去十多年，我在音樂科技、金融科技與 O2O 服務領域，帶領跨領域團隊打造品牌與產品體驗。工作範疇涵蓋硬體、軟體、零售、國際展會與整合行銷。"
-              data-en="For more than a decade, I have led multidisciplinary teams across music technology, fintech, and O2O services, creating brand and product experiences across hardware, software, retail, global exhibitions, and integrated campaigns."
+              data-zh="過去二十多年，我在音樂科技、金融科技與 O2O 服務領域，帶領跨領域團隊打造品牌與產品體驗。工作範疇涵蓋硬體、軟體、零售、國際展會與整合行銷。"
+              data-en="For more than two decades, I have worked across music technology, fintech, and O2O services, leading multidisciplinary teams to create brand and product experiences spanning hardware, software, retail, global exhibitions, and integrated campaigns."
             >
-              過去十多年，我在音樂科技、金融科技與 O2O
+              過去二十多年，我在音樂科技、金融科技與 O2O
               服務領域，帶領跨領域團隊打造品牌與產品體驗。工作範疇涵蓋硬體、軟體、零售、國際展會與整合行銷。
             </p>
             <p
@@ -200,21 +268,21 @@
         </div>
         <div class="stats">
           <article class="stat reveal">
+            <strong><span class="counter" data-target="20">0</span>+</strong>
+            <p
+              data-zh="20 年設計實務經驗"
+              data-en="20 years of design experience"
+            >
+              20 年設計實務經驗
+            </p>
+          </article>
+          <article class="stat reveal">
             <strong><span class="counter" data-target="12">0</span>+</strong>
             <p
               data-zh="12 年設計領導經驗"
               data-en="12 years of design leadership"
             >
               12 年設計領導經驗
-            </p>
-          </article>
-          <article class="stat reveal">
-            <strong><span class="counter" data-target="10">0</span>+</strong>
-            <p
-              data-zh="主導軟硬體產品發布"
-              data-en="Hardware and software launches"
-            >
-              主導軟硬體產品發布
             </p>
           </article>
           <article class="stat reveal">
@@ -246,11 +314,18 @@
           </div>
         </div>
         <div class="work-heading">
-          <h2
-            data-zh="從品牌、產品到數位體驗。"
-            data-en="From brands and products to digital experiences."
-          >
-            從品牌、產品到數位體驗。
+          <h2>
+            <span
+              data-zh="從品牌、產品到"
+              data-en="From brands and products to"
+              >從品牌、產品到</span
+            ><!--
+            --><span
+              class="section-keyword"
+              data-zh="數位體驗。"
+              data-en=" digital experiences."
+              >數位體驗。</span
+            >
           </h2>
           <p
             data-zh="精選橫跨音樂科技、金融科技、餐飲服務與國際品牌的作品。點擊專案即可瀏覽完整內容。"
@@ -333,7 +408,7 @@
               <div class="work-meta">
                 <div>
                   <span>HEALTH · CORPORATE IDENTITY</span>
-                  <h3>SILNA <i aria-hidden="true">＋</i></h3>
+                  <h3>SILNA <i class="ui-plus" aria-hidden="true"></i></h3>
                 </div>
                 <p
                   data-zh="健康品牌識別系統與視覺應用。"
@@ -357,7 +432,7 @@
               <div class="work-meta">
                 <div>
                   <span>TECH · CORPORATE IDENTITY</span>
-                  <h3>INFINIX <i aria-hidden="true">＋</i></h3>
+                  <h3>INFINIX <i class="ui-plus" aria-hidden="true"></i></h3>
                 </div>
                 <p
                   data-zh="科技品牌識別系統與視覺應用。"
@@ -381,7 +456,7 @@
               <div class="work-meta">
                 <div>
                   <span>CHAMPAGNE · CORPORATE IDENTITY</span>
-                  <h3>ROSELINE <i aria-hidden="true">＋</i></h3>
+                  <h3>ROSELINE <i class="ui-plus" aria-hidden="true"></i></h3>
                 </div>
                 <p
                   data-zh="香檳品牌識別、包裝與視覺應用。"
@@ -405,7 +480,7 @@
               <div class="work-meta">
                 <div>
                   <span>MOTION DESIGN · VISUAL SYSTEMS</span>
-                  <h3>FRAME NODE <i aria-hidden="true">＋</i></h3>
+                  <h3>FRAME NODE <i class="ui-plus" aria-hidden="true"></i></h3>
                 </div>
                 <p
                   data-zh="動態設計工作室的品牌識別與模組化視覺系統。"
@@ -429,7 +504,7 @@
               <div class="work-meta">
                 <div>
                   <span>CONSUMER TECH · BRAND IDENTITY</span>
-                  <h3>LUMINA <i aria-hidden="true">＋</i></h3>
+                  <h3>LUMINA <i class="ui-plus" aria-hidden="true"></i></h3>
                 </div>
                 <p
                   data-zh="智慧投影系統的品牌識別與產品視覺語言。"
@@ -453,7 +528,7 @@
               <div class="work-meta">
                 <div>
                   <span>FOOD · PACKAGING · BRAND IDENTITY</span>
-                  <h3>YUGUO 嶼菓 <i aria-hidden="true">＋</i></h3>
+                  <h3>YUGUO 嶼菓 <i class="ui-plus" aria-hidden="true"></i></h3>
                 </div>
                 <p
                   data-zh="以台灣島嶼風土為核心的糕點品牌與包裝系統。"
@@ -477,7 +552,7 @@
               <div class="work-meta">
                 <div>
                   <span>BEAUTY · SKINCARE · BRAND IDENTITY</span>
-                  <h3>SHIZUKA <i aria-hidden="true">＋</i></h3>
+                  <h3>SHIZUKA <i class="ui-plus" aria-hidden="true"></i></h3>
                 </div>
                 <p
                   data-zh="以靜謐與平衡為核心的保養品牌識別與包裝。"
@@ -504,7 +579,7 @@
                   <h3>BIAS X</h3>
                 </div>
                 <p data-zh="AI 音色產品的品牌語言與全球行銷視覺。" data-en="Brand language and global campaign visuals for an AI-powered guitar tone product.">AI 音色產品的品牌語言與全球行銷視覺。</p>
-                <i aria-hidden="true">＋</i>
+                <i class="ui-plus" aria-hidden="true"></i>
               </div>
             </button>
           </article>
@@ -517,7 +592,7 @@
               <div class="work-meta">
                 <div><span>POSITIVE GRID · GLOBAL CAMPAIGN</span><h3>Spark</h3></div>
                 <p data-zh="全球暢銷智慧吉他音箱的品牌活動與零售端溝通設計。" data-en="Global campaigns and retail communications for a best-selling smart guitar amp.">全球暢銷智慧吉他音箱的品牌活動與零售端溝通設計。</p>
-                <i aria-hidden="true">＋</i>
+                <i class="ui-plus" aria-hidden="true"></i>
               </div>
             </button>
           </article>
@@ -534,7 +609,7 @@
               <div class="work-meta">
                 <div>
                   <span>FINTECH · CORPORATE IDENTITY</span>
-                  <h3>COBINHOOD CIS <i aria-hidden="true">＋</i></h3>
+                  <h3>COBINHOOD CIS <i class="ui-plus" aria-hidden="true"></i></h3>
                 </div>
                 <p
                   data-zh="虛擬貨幣交易所的品牌識別與數位產品視覺系統。"
@@ -553,7 +628,7 @@
               </div>
               <div class="work-meta">
                 <div><span>FINTECH · PRODUCT DESIGN · 2018</span><h3>COBINHOOD App</h3></div>
-                <i aria-hidden="true">＋</i>
+                <i class="ui-plus" aria-hidden="true"></i>
               </div>
             </button>
           </article>
@@ -565,7 +640,7 @@
               </div>
               <div class="work-meta">
                 <div><span>BLOCKCHAIN · PRODUCT DESIGN · 2019</span><h3>DEXON Wallet</h3></div>
-                <i aria-hidden="true">＋</i>
+                <i class="ui-plus" aria-hidden="true"></i>
               </div>
             </button>
           </article>
@@ -577,7 +652,7 @@
               </div>
               <div class="work-meta">
                 <div><span>O2O · PRODUCT DESIGN · 2016</span><h3>EZTABLE</h3></div>
-                <i aria-hidden="true">＋</i>
+                <i class="ui-plus" aria-hidden="true"></i>
               </div>
             </button>
           </article>
@@ -595,7 +670,7 @@
                   >五星飯店 · 網站設計 · 2013</span>
                   <h3>Humble House</h3>
                 </div>
-                <i aria-hidden="true">＋</i>
+                <i class="ui-plus" aria-hidden="true"></i>
               </div>
             </button>
           </article>
@@ -607,7 +682,7 @@
               </div>
               <div class="work-meta">
                 <div><span>CAMPAIGN · WEB · 2012</span><h3>Logitech</h3></div>
-                <i aria-hidden="true">＋</i>
+                <i class="ui-plus" aria-hidden="true"></i>
               </div>
             </button>
           </article>
@@ -625,7 +700,7 @@
                   >汽車產業 · 網站設計 · 2012</span>
                   <h3>LUXGEN</h3>
                 </div>
-                <i aria-hidden="true">＋</i>
+                <i class="ui-plus" aria-hidden="true"></i>
               </div>
             </button>
           </article>
@@ -643,7 +718,7 @@
                   >五星飯店 · 網站設計 · 2013</span>
                   <h3>Sheraton Taipei</h3>
                 </div>
-                <i aria-hidden="true">＋</i>
+                <i class="ui-plus" aria-hidden="true"></i>
               </div>
             </button>
           </article>
@@ -665,7 +740,7 @@
           <h2 data-zh="建立能持續成長的品牌生態。" data-en="Building brand ecosystems designed to grow."
             >建立能持續成長的品牌生態。</h2
           >
-          <p>2013 — 2026</p>
+          <p>2003 — 2026</p>
         </div>
 
         <div class="timeline">
@@ -824,6 +899,67 @@
             </div>
           </article>
         </div>
+
+        <div class="early-career">
+          <div class="early-career-heading">
+            <p data-zh="早期經歷" data-en="Earlier Career">早期經歷</p>
+            <span
+              data-zh="從視覺設計、網站到品牌與產品，建立跨媒介的實作基礎。"
+              data-en="Building a cross-disciplinary foundation across visual design, web, brand, and product."
+              >從視覺設計、網站到品牌與產品，建立跨媒介的實作基礎。</span
+            >
+          </div>
+          <div class="early-career-list">
+            <article class="early-role reveal">
+              <p>2012 — 2013</p>
+              <div>
+                <span>KAMIA</span>
+                <h3>Product Designer</h3>
+                <p
+                  data-zh="品牌規劃與官方網站設計。"
+                  data-en="Brand planning and corporate website design."
+                  >品牌規劃與官方網站設計。</p
+                >
+              </div>
+            </article>
+            <article class="early-role reveal">
+              <p>2011 — 2012</p>
+              <div>
+                <span>AGENDA</span>
+                <h3>Senior Designer</h3>
+                <p
+                  data-zh="活動網站與品牌數位體驗設計。"
+                  data-en="Campaign websites and branded digital experiences."
+                  >活動網站與品牌數位體驗設計。</p
+                >
+              </div>
+            </article>
+            <article class="early-role reveal">
+              <p>2008 — 2011</p>
+              <div>
+                <span>UNI-NET</span>
+                <h3>Senior Designer</h3>
+                <p
+                  data-zh="視覺設計與網站設計。"
+                  data-en="Visual design and website design."
+                  >視覺設計與網站設計。</p
+                >
+              </div>
+            </article>
+            <article class="early-role reveal">
+              <p>2003 — 2008</p>
+              <div>
+                <span>ARTIE 亞惶廣告</span>
+                <h3>Designer</h3>
+                <p
+                  data-zh="平面、網站與多媒體設計。"
+                  data-en="Graphic, web, and multimedia design."
+                  >平面、網站與多媒體設計。</p
+                >
+              </div>
+            </article>
+          </div>
+        </div>
       </section>
 
       <section class="expertise section" id="expertise">
@@ -834,11 +970,16 @@
           </div>
         </div>
         <div class="expertise-grid">
-          <h2
-            data-zh="策略思考，實作落地。"
-            data-en="Strategic thinking, brought to life."
-          >
-            策略思考，實作落地。
+          <h2>
+            <span data-zh="策略思考，" data-en="Strategic thinking,"
+              >策略思考，</span
+            ><!--
+            --><span
+              class="section-keyword"
+              data-zh="實作落地。"
+              data-en=" brought to life."
+              >實作落地。</span
+            >
           </h2>
           <div class="capabilities">
             <article class="capability reveal">
@@ -1020,21 +1161,32 @@
           <span data-zh="專案設計合作" data-en="Project-based design">專案設計合作</span>
           <span data-zh="獨立設計委託" data-en="Independent design services">獨立設計委託</span>
         </div>
-        <a
-          class="email-link"
-          href="mailto:wen.website@gmail.com"
-          data-track="contact_click"
-          data-track-label="Email"
-          >wen.website@gmail.com <span class="ui-arrow ui-arrow-up-right" aria-hidden="true"></span></a
-        >
-        <div class="contact-bottom">
-          <p>TAIPEI, TAIWAN · AVAILABLE FOR GLOBAL COLLABORATION</p>
+        <div class="contact-actions">
           <a
+            class="email-link"
+            href="mailto:wen.website@gmail.com"
+            data-track="contact_click"
+            data-track-label="Email"
+          >
+            <span>
+              <small data-zh="聯絡我" data-en="Get in touch">聯絡我</small>
+              <strong>wen.website@gmail.com</strong>
+            </span>
+            <span class="ui-arrow ui-arrow-up-right" aria-hidden="true"></span>
+          </a>
+          <a
+            class="contact-phone"
             href="tel:+886975551061"
             data-track="contact_click"
             data-track-label="Phone"
-            >+886 975-551061</a
           >
+            <small data-zh="直接來電" data-en="Call directly">直接來電</small>
+            <strong>+886 975-551061</strong>
+          </a>
+        </div>
+        <div class="contact-bottom">
+          <p>TAIPEI, TAIWAN · AVAILABLE FOR GLOBAL COLLABORATION</p>
+          <p>BRAND · PRODUCT · CREATIVE LEADERSHIP</p>
           <p>© <span id="year"></span> KU CHUNG-WEN</p>
         </div>
       </section>
@@ -1046,7 +1198,9 @@
           <p>SELECTED WORK · PROJECT VIEWER</p>
           <h2 id="cis-viewer-title"></h2>
         </div>
-        <button class="cis-viewer-close" type="button" aria-label="關閉作品">×</button>
+        <button class="cis-viewer-close" type="button" aria-label="關閉作品">
+          <span class="ui-close" aria-hidden="true"></span>
+        </button>
       </div>
       <div class="cis-viewer-stage">
         <button class="cis-viewer-nav cis-viewer-prev" type="button" aria-label="上一張">
