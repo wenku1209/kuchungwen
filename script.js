@@ -6,8 +6,13 @@ const mainContent = document.querySelector("main");
 const translatableElements = document.querySelectorAll("[data-zh][data-en]");
 const profileImage = document.querySelector(".portrait-frame img");
 const languagePreferenceKey = "portfolio_language";
+const isEnglishPage = window.location.pathname
+  .replace(/\/+$/, "/")
+  .includes("/en/");
 
 function getInitialLanguage() {
+  if (isEnglishPage) return "en";
+
   try {
     const savedLanguage = window.localStorage.getItem(languagePreferenceKey);
     if (savedLanguage === "zh" || savedLanguage === "en") {
@@ -79,6 +84,15 @@ languageButton.addEventListener("click", () => {
   const nextLanguage = currentLanguage === "zh" ? "en" : "zh";
   setLanguage(nextLanguage, true);
   trackEvent("language_switch", { selected_language: nextLanguage });
+
+  if (nextLanguage === "en" && !isEnglishPage) {
+    window.location.href = "en/";
+    return;
+  }
+
+  if (nextLanguage === "zh" && isEnglishPage) {
+    window.location.href = "../";
+  }
 });
 
 menuButton.addEventListener("click", () => {
@@ -126,6 +140,7 @@ const counterObserver = new IntersectionObserver(
       const target = Number(counter.dataset.target);
       const duration = 900;
       const startTime = performance.now();
+      counter.textContent = "0";
 
       function updateCounter(now) {
         const progress = Math.min((now - startTime) / duration, 1);
