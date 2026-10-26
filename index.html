@@ -86,14 +86,47 @@
               "@type": "Organization",
               "name": "Positive Grid"
             },
-            "award": "Red Dot Communication Design Award 2018"
+            "award": "Red Dot Communication Design Award 2018",
+            "mainEntityOfPage": [
+              {
+                "@id": "https://kuchungwen.netlify.app/#profile"
+              },
+              {
+                "@id": "https://kuchungwen.netlify.app/en/#profile"
+              }
+            ],
+            "subjectOf": [
+              {
+                "@type": "DigitalDocument",
+                "name": "古仲文履歷",
+                "url": "https://kuchungwen.netlify.app/assets/ku-chung-wen-resume-2026-zh.pdf",
+                "encodingFormat": "application/pdf",
+                "inLanguage": "zh-Hant",
+                "about": {
+                  "@id": "https://kuchungwen.netlify.app/#person"
+                }
+              },
+              {
+                "@type": "DigitalDocument",
+                "name": "Ku Chung-Wen Resume",
+                "url": "https://kuchungwen.netlify.app/assets/ku-chung-wen-resume-2026-en.pdf",
+                "encodingFormat": "application/pdf",
+                "inLanguage": "en",
+                "about": {
+                  "@id": "https://kuchungwen.netlify.app/#person"
+                }
+              }
+            ]
           },
           {
             "@type": "WebSite",
             "@id": "https://kuchungwen.netlify.app/#website",
             "url": "https://kuchungwen.netlify.app/",
             "name": "Ku Chung-Wen Portfolio",
-            "inLanguage": ["zh-Hant", "en"],
+            "inLanguage": [
+              "zh-Hant",
+              "en"
+            ],
             "publisher": {
               "@id": "https://kuchungwen.netlify.app/#person"
             }
@@ -104,19 +137,69 @@
             "url": "https://kuchungwen.netlify.app/",
             "name": "Ku Chung-Wen Design Leadership Portfolio",
             "description": "Selected work across brand strategy, product experience, corporate identity systems, and AI-powered creative operations.",
-            "inLanguage": ["zh-Hant", "en"],
+            "inLanguage": [
+              "zh-Hant",
+              "en"
+            ],
             "mainEntity": {
               "@type": "ItemList",
               "itemListElement": [
-                { "@type": "ListItem", "position": 1, "name": "Positive Grid Spark", "url": "https://kuchungwen.netlify.app/#work" },
-                { "@type": "ListItem", "position": 2, "name": "COBINHOOD", "url": "https://kuchungwen.netlify.app/#work" },
-                { "@type": "ListItem", "position": 3, "name": "EZTABLE", "url": "https://kuchungwen.netlify.app/#work" },
-                { "@type": "ListItem", "position": 4, "name": "NODO", "url": "https://kuchungwen.netlify.app/cis.html" },
-                { "@type": "ListItem", "position": 5, "name": "NEXVA", "url": "https://kuchungwen.netlify.app/nexva.html" }
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Positive Grid Spark",
+                  "url": "https://kuchungwen.netlify.app/#work"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "COBINHOOD",
+                  "url": "https://kuchungwen.netlify.app/#work"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "EZTABLE",
+                  "url": "https://kuchungwen.netlify.app/#work"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 4,
+                  "name": "NODO",
+                  "url": "https://kuchungwen.netlify.app/cis.html"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 5,
+                  "name": "NEXVA",
+                  "url": "https://kuchungwen.netlify.app/nexva.html"
+                }
               ]
             },
             "about": {
               "@id": "https://kuchungwen.netlify.app/#person"
+            }
+          },
+          {
+            "@type": "ProfilePage",
+            "@id": "https://kuchungwen.netlify.app/#profile",
+            "url": "https://kuchungwen.netlify.app/",
+            "name": "古仲文 Ku Chung-Wen｜履歷與作品集",
+            "description": "古仲文 Ku Chung-Wen 是設計領導者，專注品牌策略、產品體驗、企業識別系統與 AI 驅動的創意營運，曾服務 Positive Grid、COBINHOOD、DEXON、EZTABLE 等科技與生活品牌。",
+            "inLanguage": "zh-Hant",
+            "mainEntity": {
+              "@id": "https://kuchungwen.netlify.app/#person"
+            },
+            "isPartOf": {
+              "@id": "https://kuchungwen.netlify.app/#website"
+            },
+            "relatedLink": [
+              "https://kuchungwen.netlify.app/#experience",
+              "https://kuchungwen.netlify.app/#expertise",
+              "https://kuchungwen.netlify.app/#work"
+            ],
+            "workTranslation": {
+              "@id": "https://kuchungwen.netlify.app/en/#profile"
             }
           }
         ]
